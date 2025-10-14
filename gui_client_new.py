@@ -12,6 +12,10 @@ import json
 import time
 import pyautogui
 import keyboard
+import random
+import math
+from pynput.mouse import Controller as MouseController, Button
+from pynput.keyboard import Controller as KeyboardController
 
 
 class ComputerUseClient:
@@ -29,7 +33,123 @@ class ComputerUseClient:
         self.screen_width = pyautogui.size()[0]
         self.screen_height = pyautogui.size()[1]
         
+        # Initialize pynput controllers
+        self.mouse = MouseController()
+        self.kbd = KeyboardController()
+        
         self.setup_ui()
+    
+    def human_like_mouse_move(self, target_x, target_y):
+        """
+        Move mouse to target position with human-like behavior using pynput:
+        - Curved path (bezier curve)
+        - Variable speed (fast then slow)
+        - Overshooting and correction (3 attempts)
+        - Small adjustments at the end
+        """
+        start_x, start_y = self.mouse.position
+        
+        # Calculate distance
+        distance = math.sqrt((target_x - start_x)**2 + (target_y - start_y)**2)
+        
+        # If distance is very small, just move directly
+        if distance < 5:
+            self.mouse.position = (target_x, target_y)
+            return
+        
+        # === FIRST ATTEMPT: Overshoot (miss by larger radius) ===
+        overshoot_radius = random.randint(15, 30)
+        angle1 = random.uniform(0, 2 * math.pi)
+        overshoot_x = target_x + int(overshoot_radius * math.cos(angle1))
+        overshoot_y = target_y + int(overshoot_radius * math.sin(angle1))
+        
+        # Generate bezier curve for smooth movement - 25% slower than before
+        steps = max(int(distance / 16), 5)  # 25% more steps (was distance/20, min 4)
+        
+        # Random control points for natural curve
+        mid_x = (start_x + overshoot_x) / 2 + random.randint(-100, 100)
+        mid_y = (start_y + overshoot_y) / 2 + random.randint(-100, 100)
+        
+        cp1_x = start_x + (mid_x - start_x) / 2 + random.randint(-50, 50)
+        cp1_y = start_y + (mid_y - start_y) / 2 + random.randint(-50, 50)
+        cp2_x = mid_x + (overshoot_x - mid_x) / 2 + random.randint(-50, 50)
+        cp2_y = mid_y + (overshoot_y - mid_y) / 2 + random.randint(-50, 50)
+        
+        # Move along bezier curve to overshoot point
+        for i in range(steps + 1):
+            t = i / steps
+            # Ease-in-out for natural acceleration/deceleration
+            t_eased = t * t * (3 - 2 * t)
+            
+            # Cubic bezier curve
+            x = (1-t_eased)**3 * start_x + \
+                3*(1-t_eased)**2 * t_eased * cp1_x + \
+                3*(1-t_eased) * t_eased**2 * cp2_x + \
+                t_eased**3 * overshoot_x
+            y = (1-t_eased)**3 * start_y + \
+                3*(1-t_eased)**2 * t_eased * cp1_y + \
+                3*(1-t_eased) * t_eased**2 * cp2_y + \
+                t_eased**3 * overshoot_y
+            
+            self.mouse.position = (int(x), int(y))
+            # Small delay for smoother movement (25% slower)
+            time.sleep(0.00005)
+        
+        # Slightly longer pause after overshoot (25% slower: was 0.0025-0.005)
+        time.sleep(random.uniform(0.003, 0.006))
+        
+        # === SECOND ATTEMPT: Get closer but still miss ===
+        second_radius = random.randint(8, 30)
+        angle2 = random.uniform(0, 2 * math.pi)
+        second_x = target_x + int(second_radius * math.cos(angle2))
+        second_y = target_y + int(second_radius * math.sin(angle2))
+        
+        # Quick correction with smaller curve - FASTER
+        correction_steps = random.randint(5, 8)  # Fewer steps (was 10-18)
+        current_x, current_y = self.mouse.position
+        
+        for i in range(correction_steps + 1):
+            t = i / correction_steps
+            # Quick movement without heavy easing
+            x = current_x + t * (second_x - current_x)
+            y = current_y + t * (second_y - current_y)
+            
+            # Add micro-jitter for realism
+            jitter_x = random.uniform(-0.5, 0.5)
+            jitter_y = random.uniform(-0.5, 0.5)
+            
+            self.mouse.position = (int(x + jitter_x), int(y + jitter_y))
+            time.sleep(0.0001)  # Almost instant
+        
+        # Very short pause
+        time.sleep(random.uniform(0.003, 0.006))
+        
+        # === THIRD ATTEMPT: Final precise movement ===
+        final_steps = random.randint(3, 6)  # Fewer steps (was 6-12)
+        current_x, current_y = self.mouse.position
+        
+        for i in range(final_steps + 1):
+            t = i / final_steps
+            # Smooth deceleration to target
+            t_eased = 1 - (1 - t)**2
+            
+            x = current_x + t_eased * (target_x - current_x)
+            y = current_y + t_eased * (target_y - current_y)
+            
+            # Tiny jitter except on final position
+            if i < final_steps:
+                jitter_x = random.uniform(-0.8, 0.8)
+                jitter_y = random.uniform(-0.8, 0.8)
+            else:
+                jitter_x = 0
+                jitter_y = 0
+            
+            self.mouse.position = (int(x + jitter_x), int(y + jitter_y))
+            time.sleep(0.0001)  # Almost instant
+        
+        # Ensure final position is exact
+        self.mouse.position = (target_x, target_y)
+        time.sleep(random.uniform(0.001, 0.003))  # Very short final pause
         
     def normalize_x(self, x: int) -> int:
         """Convert normalized x coordinate (0-1000) to actual pixel coordinate."""
@@ -163,7 +283,13 @@ class ComputerUseClient:
                     actual_y = y
                 
                 self.log(f"     ✓ Clicking at ({actual_x}, {actual_y})", "SUCCESS")
-                pyautogui.click(actual_x, actual_y)
+                
+                # Move mouse with human-like behavior
+                self.human_like_mouse_move(actual_x, actual_y)
+                
+                # Click with small random delay
+                time.sleep(random.uniform(0.05, 0.15))
+                self.mouse.click(Button.left, 1)
                 time.sleep(0.5)
                 result = "success"
                 
@@ -186,7 +312,10 @@ class ComputerUseClient:
                 
                 # Click at location first (unless coordinates are 0,0 which means "just type")
                 if actual_x > 0 or actual_y > 0:
-                    pyautogui.click(actual_x, actual_y)
+                    # Use human-like mouse movement
+                    self.human_like_mouse_move(actual_x, actual_y)
+                    time.sleep(random.uniform(0.05, 0.15))
+                    self.mouse.click(Button.left, 1)
                     time.sleep(0.2)
                 
                 # Clear existing text if requested

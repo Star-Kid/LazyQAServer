@@ -22,3 +22,6 @@ pyautogui
 
 # Unicode keyboard input (for multi-language text typing)
 keyboard
+
+# Mouse and keyboard control (for human-like movements)
+pynput
