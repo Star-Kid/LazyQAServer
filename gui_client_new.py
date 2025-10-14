@@ -7,7 +7,7 @@ import tkinter as tk
 from tkinter import scrolledtext, messagebox
 import requests
 import base64
-from PIL import ImageGrab
+from PIL import ImageGrab, Image
 import json
 import time
 import pyautogui
@@ -227,9 +227,16 @@ class ComputerUseClient:
         self.root.update()
         
     def capture_screenshot(self):
-        """Capture and encode screenshot"""
+        """Capture and encode screenshot - resized to 50% for faster transmission"""
         try:
             screenshot = ImageGrab.grab()
+            
+            # Resize to 50% (2x smaller by pixels)
+            original_width, original_height = screenshot.size
+            new_width = original_width // 2
+            new_height = original_height // 2
+            screenshot = screenshot.resize((new_width, new_height), Image.LANCZOS)
+            
             from io import BytesIO
             buffer = BytesIO()
             screenshot.save(buffer, format="PNG")
