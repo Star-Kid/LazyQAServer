@@ -11,6 +11,7 @@ from PIL import ImageGrab
 import json
 import time
 import pyautogui
+import keyboard
 
 
 class ComputerUseClient:
@@ -194,8 +195,9 @@ class ComputerUseClient:
                     pyautogui.press('backspace')
                     time.sleep(0.1)
                 
-                # Type the text
-                pyautogui.write(text, interval=0.05)
+                # Use keyboard library for Unicode text input (supports all languages)
+                keyboard.write(text, delay=0.02)
+                time.sleep(0.1)
                 
                 # Press enter if requested
                 if press_enter:

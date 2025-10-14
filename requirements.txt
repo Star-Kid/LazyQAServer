@@ -19,3 +19,6 @@ requests
 
 # GUI Automation (for click, type, etc.)
 pyautogui
+
+# Unicode keyboard input (for multi-language text typing)
+keyboard
