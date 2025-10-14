@@ -1,0 +1,21 @@
+# Computer Use Server - Requirements
+# Install: pip install -r requirements.txt
+
+# Google GenAI SDK (for Computer Use model)
+google-genai
+
+# Web Framework
+fastapi
+uvicorn
+
+# Data Validation
+pydantic
+
+# Image Processing (for screenshot capture)
+pillow
+
+# HTTP Client (for API requests)
+requests
+
+# GUI Automation (for click, type, etc.)
+pyautogui
