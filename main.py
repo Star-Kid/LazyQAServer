@@ -33,9 +33,19 @@ app.add_middleware(
 
 # Load API key
 def load_api_key() -> str:
-    with open('condig.txt', 'r') as f:
+    """Load API key from condig.txt.
+    
+    Supports formats:
+    - AI_API = "key"
+    - GOOGLE_API_KEY="key"
+    - Raw key without =
+    """
+    with open('condig.txt', 'r', encoding='utf-8') as f:
         content = f.read().strip()
-        return content.split('=')[1].strip().strip('"') if '=' in content else content
+        if '=' in content:
+            # Extract value after = and remove quotes
+            return content.split('=', 1)[1].strip().strip('"').strip("'")
+        return content
 
 
 def load_system_instruction() -> str:
