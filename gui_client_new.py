@@ -227,21 +227,16 @@ class ComputerUseClient:
         self.root.update()
         
     def capture_screenshot(self):
-        """Capture, save, and encode screenshot - resized to 50% for faster transmission"""
+        """Capture and encode screenshot - resized to 50% for faster transmission"""
         try:
             screenshot = ImageGrab.grab()
+            
             # Resize to 50% (2x smaller by pixels)
             original_width, original_height = screenshot.size
             new_width = original_width // 2
             new_height = original_height // 2
             screenshot = screenshot.resize((new_width, new_height), Image.LANCZOS)
-            # Save screenshot to Screen/ folder
-            import os
-            os.makedirs("Screen", exist_ok=True)    
-            session_id = self.session_id if self.session_id else "init"
-            filename = f"Screen/{session_id}_iter{self.iteration+1}_{time.strftime('%Y%m%d_%H%M%S')}.png"
-            screenshot.save(filename, format="PNG")
-            self.log(f"Screenshot saved: {filename}", "INFO")
+            
             from io import BytesIO
             buffer = BytesIO()
             screenshot.save(buffer, format="PNG")

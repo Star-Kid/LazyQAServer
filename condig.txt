@@ -1,1 +1,0 @@
-AI_API = "AIzaSyCUlBjd_F09qhjZ4zmORC7Rgq8Tt-IXXdY"
