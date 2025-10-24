@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LazyQA Test Cases</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/sidebar.css" />
+    <link rel="stylesheet" href="css/test-case-modal.css" />
+    <script src="js/sidebar.js" defer></script>
+    <script src="js/test-case-modal.js" defer></script>
+    <script src="js/test-case-navigation.js" defer></script>
+    <style>
+      select option.add-new {
+        color: #3b82f6;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 text-gray-900 font-inter">
+    <div class="sidebar-overlay" data-role="sidebar-overlay"></div>
+    <header class="mobile-top-bar">
+      <button
+        type="button"
+        class="mobile-menu-button"
+        data-role="mobile-menu-toggle"
+        aria-controls="app-sidebar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="mobile-menu-icon" aria-hidden="true"></span>
+      </button>
+      <div class="mobile-brand">
+        <span class="mobile-brand-dot" aria-hidden="true"></span>
+        <span>LazyQA</span>
+      </div>
+    </header>
+    <div class="app-shell">
+      <aside class="sidebar" data-role="app-sidebar" id="app-sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-logo" aria-label="LazyQA navigation">
+            <div class="sidebar-logo-mark" aria-hidden="true"></div>
+            <span class="sidebar-logo-text">LazyQA</span>
+          </div>
+          <div class="sidebar-project">
+            <div class="sidebar-project-placeholder" aria-hidden="true">🗂️</div>
+            <select class="sidebar-project-select" aria-label="Switch project">
+              <option>MazeKeeper</option>
+              <option>Locus Guide</option>
+              <option>Big Render</option>
+              <option class="add-new">+ Add new</option>
+            </select>
+          </div>
+          <nav class="sidebar-nav" aria-label="Primary">
+            <a href="Main.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">📊</span>
+              <span class="sidebar-label">Project Dashboard</span>
+            </a>
+            <a href="project-settings.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">⚙️</span>
+              <span class="sidebar-label">Project Settings</span>
+            </a>
+            <a href="documentation.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">📚</span>
+              <span class="sidebar-label">Documentation</span>
+            </a>
+            <div class="sidebar-link-with-action">
+              <a href="test-cases.html" class="sidebar-link active">
+                <span class="sidebar-icon" aria-hidden="true">🧪</span>
+                <span class="sidebar-label">Test Cases</span>
+              </a>
+              <button
+                type="button"
+                class="sidebar-action-button"
+                title="Add new Test Case"
+                data-modal-trigger="test-case"
+                aria-label="Create new test case"
+              >
+                ＋
+              </button>
+            </div>
+            <a href="test-runs.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">🧭</span>
+              <span class="sidebar-label">Test Runs</span>
+            </a>
+            <a href="reports.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">📈</span>
+              <span class="sidebar-label">Reports</span>
+            </a>
+          </nav>
+        </div>
+        <div class="sidebar-footer">
+          <nav class="sidebar-nav" aria-label="Secondary">
+            <a href="plans.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">💳</span>
+              <span class="sidebar-label">Plans</span>
+            </a>
+            <a href="settings.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">⚙️</span>
+              <span class="sidebar-label">Settings</span>
+            </a>
+          </nav>
+          <div class="sidebar-version">v0.3.2 Beta</div>
+        </div>
+      </aside>
+      <main class="app-main">
+        <div class="app-content space-y-8">
+          <header
+            class="flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-slate-200 bg-gradient-to-r from-indigo-50 via-white to-cyan-50 px-6 py-5 text-sm shadow-sm backdrop-blur"
+          >
+            <div class="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-wide text-indigo-600">
+              <span class="inline-flex items-center gap-2 rounded-full bg-indigo-500/10 px-3 py-1">
+                <span class="h-2 w-2 animate-pulse rounded-full bg-indigo-500"></span>
+                Active workspace
+              </span>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 text-sm font-medium text-slate-700">
+              <span class="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1.5 shadow-sm ring-1 ring-slate-200">
+                <span>🧪</span>
+                <span>Tests in queue: 5</span>
+              </span>
+              <span class="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1.5 shadow-sm ring-1 ring-slate-200">
+                <span>💻</span>
+                <span>3 sessions</span>
+              </span>
+              <span class="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1.5 shadow-sm ring-1 ring-slate-200">
+                <span>⏱</span>
+                <span>12 today</span>
+              </span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="text-right">
+                <p class="text-sm font-semibold text-slate-900">Anastasia QA</p>
+                <p class="text-xs text-slate-500">Lead tester</p>
+              </div>
+              <div class="relative inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-sky-500 text-base font-semibold text-white shadow-sm">
+                AQ
+                <span class="absolute bottom-0 right-0 inline-flex h-3 w-3 rounded-full border-2 border-white bg-emerald-400"></span>
+              </div>
+            </div>
+          </header>
+
+          <section aria-labelledby="recent-cases-heading" class="space-y-3">
+            <div class="flex items-center justify-between">
+              <h2 id="recent-cases-heading" class="text-base font-semibold text-slate-900 tracking-tight">Recent Run Cases</h2>
+              <button
+                type="button"
+                class="inline-flex items-center gap-2 rounded-full border border-slate-300 px-4 py-1.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
+                data-modal-trigger="test-case"
+              >
+                <span>✍️</span>
+                <span>Create manual test</span>
+              </button>
+            </div>
+
+            <article
+              class="flex cursor-pointer items-center justify-between rounded-xl border border-slate-200 bg-white p-4 text-sm shadow transition hover:border-blue-200 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+              data-test-case-target="test-case-details.html"
+              role="link"
+              tabindex="0"
+            >
+              <div class="pl-1">
+                <h3 class="text-[15px] font-medium text-slate-900">User Login with Valid Credentials</h3>
+                <p class="mt-1 text-slate-600">Verify successful login with valid credentials</p>
+                <dl class="mt-3 flex flex-wrap items-center gap-4 text-xs text-slate-500">
+                  <div class="flex items-center gap-1">
+                    <dt class="sr-only">Last updated</dt>
+                    <dd class="text-slate-400">Last updated: Oct 14, 2025</dd>
+                  </div>
+                  <div class="flex items-center gap-1 font-medium text-slate-700">
+                    <dt class="sr-only">Run count</dt>
+                    <dd>Run 12×</dd>
+                  </div>
+                  <div class="flex items-center gap-1">
+                    <dt class="sr-only">Agent</dt>
+                    <dd class="inline-flex items-center gap-1">
+                      <span class="text-slate-400">💻</span>
+                      <span>Agent: macOS-local-01</span>
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+              <div class="text-right">
+                <div class="mb-2 flex items-center justify-end gap-2">
+                  <span class="rounded px-3 py-1 text-xs font-semibold text-green-800 bg-green-100">Passed</span>
+                  <span class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600">
+                    <span class="text-blue-500">⏱</span>
+                    <span>45s</span>
+                  </span>
+                </div>
+                <p class="text-sm font-medium text-slate-900">John Doe</p>
+                <p class="text-xs text-slate-500">Priority: Critical</p>
+              </div>
+            </article>
+
+            <article
+              class="flex cursor-pointer items-center justify-between rounded-xl border border-slate-200 bg-white p-4 text-sm shadow transition hover:border-blue-200 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+              data-test-case-target="test-case-details.html"
+              role="link"
+              tabindex="0"
+            >
+              <div class="pl-1">
+                <h3 class="text-[15px] font-medium text-slate-900">User Login with Invalid Password</h3>
+                <p class="mt-1 text-slate-600">Verify error message is shown when password is invalid</p>
+                <dl class="mt-3 flex flex-wrap items-center gap-4 text-xs text-slate-500">
+                  <div class="flex items-center gap-1">
+                    <dt class="sr-only">Last updated</dt>
+                    <dd class="text-slate-400">Last updated: Oct 13, 2025</dd>
+                  </div>
+                  <div class="flex items-center gap-1 font-medium text-slate-700">
+                    <dt class="sr-only">Run count</dt>
+                    <dd>12 runs total</dd>
+                  </div>
+                  <div class="flex items-center gap-1">
+                    <dt class="sr-only">Agent</dt>
+                    <dd class="inline-flex items-center gap-1">
+                      <span class="text-slate-400">💻</span>
+                      <span>Agent: macOS-local-01</span>
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+              <div class="text-right">
+                <div class="mb-2 flex items-center justify-end gap-2">
+                  <span class="rounded px-3 py-1 text-xs font-semibold text-red-800 bg-red-100">Failed</span>
+                  <span class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600">
+                    <span class="text-blue-500">⏱</span>
+                    <span>52s</span>
+                  </span>
+                </div>
+                <p class="text-sm font-medium text-slate-900">Jane Smith</p>
+                <p class="text-xs text-slate-500">Priority: High</p>
+              </div>
+            </article>
+
+            <article
+              class="flex cursor-pointer items-center justify-between rounded-xl border border-slate-200 bg-white p-4 text-sm shadow transition hover:border-blue-200 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+              data-test-case-target="test-case-details.html"
+              role="link"
+              tabindex="0"
+            >
+              <div class="pl-1">
+                <h3 class="text-[15px] font-medium text-slate-900">Password Reset via Email</h3>
+                <p class="mt-1 text-slate-600">Ensure reset tokens expire after 15 minutes and audit trail is logged</p>
+                <dl class="mt-3 flex flex-wrap items-center gap-4 text-xs text-slate-500">
+                  <div class="flex items-center gap-1">
+                    <dt class="sr-only">Last updated</dt>
+                    <dd class="text-slate-400">Last updated: Oct 12, 2025</dd>
+                  </div>
+                  <div class="flex items-center gap-1 font-medium text-slate-700">
+                    <dt class="sr-only">Run count</dt>
+                    <dd>Run 9×</dd>
+                  </div>
+                  <div class="flex items-center gap-1">
+                    <dt class="sr-only">Agent</dt>
+                    <dd class="inline-flex items-center gap-1">
+                      <span class="text-slate-400">🤖</span>
+                      <span>Agent: ai-chrome-grid</span>
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+              <div class="text-right">
+                <div class="mb-2 flex items-center justify-end gap-2">
+                  <span class="rounded px-3 py-1 text-xs font-semibold text-yellow-800 bg-yellow-100">Flaky</span>
+                  <span class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600">
+                    <span class="text-blue-500">⏱</span>
+                    <span>1m 05s</span>
+                  </span>
+                </div>
+                <p class="text-sm font-medium text-slate-900">Automation Bot</p>
+                <p class="text-xs text-slate-500">Priority: Medium</p>
+              </div>
+            </article>
+          </section>
+
+          <section class="grid gap-6 lg:grid-cols-2">
+            <article class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+              <header class="mb-4 flex items-center justify-between">
+                <h2 class="text-base font-semibold text-slate-900">Coverage by Component</h2>
+                <span class="text-xs font-semibold text-emerald-600">▲ 4% vs last sprint</span>
+              </header>
+              <ul class="space-y-3 text-sm text-slate-600">
+                <li class="flex items-center justify-between">
+                  <span class="font-medium text-slate-900">Authentication</span>
+                  <span class="text-emerald-600">92%</span>
+                </li>
+                <li class="flex items-center justify-between">
+                  <span class="font-medium text-slate-900">Billing</span>
+                  <span class="text-emerald-600">88%</span>
+                </li>
+                <li class="flex items-center justify-between">
+                  <span class="font-medium text-slate-900">Analytics</span>
+                  <span class="text-yellow-600">71%</span>
+                </li>
+                <li class="flex items-center justify-between">
+                  <span class="font-medium text-slate-900">Notifications</span>
+                  <span class="text-red-600">54%</span>
+                </li>
+              </ul>
+            </article>
+
+            <article class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+              <header class="mb-4 flex items-center justify-between">
+                <h2 class="text-base font-semibold text-slate-900">Suggested New Tests</h2>
+                <span class="text-xs font-semibold text-blue-600">AI recommended</span>
+              </header>
+              <ul class="space-y-3 text-sm text-slate-600">
+                <li class="flex items-start justify-between gap-4">
+                  <div>
+                    <p class="font-medium text-slate-900">Payment method downgrade</p>
+                    <p class="text-xs text-slate-500">Ensure downgraded accounts retain analytics read-only access</p>
+                  </div>
+                  <button
+                    type="button"
+                    class="text-sm font-semibold text-blue-600 hover:text-blue-700"
+                    data-modal-trigger="test-case"
+                  >
+                    Queue
+                  </button>
+                </li>
+                <li class="flex items-start justify-between gap-4">
+                  <div>
+                    <p class="font-medium text-slate-900">Long session timeout warning</p>
+                    <p class="text-xs text-slate-500">Warn users 2 minutes before session expiration in dashboard</p>
+                  </div>
+                  <button
+                    type="button"
+                    class="text-sm font-semibold text-blue-600 hover:text-blue-700"
+                    data-modal-trigger="test-case"
+                  >
+                    Queue
+                  </button>
+                </li>
+                <li class="flex items-start justify-between gap-4">
+                  <div>
+                    <p class="font-medium text-slate-900">Data export compliance</p>
+                    <p class="text-xs text-slate-500">GDPR export should redact internal-only attributes</p>
+                  </div>
+                  <button
+                    type="button"
+                    class="text-sm font-semibold text-blue-600 hover:text-blue-700"
+                    data-modal-trigger="test-case"
+                  >
+                    Queue
+                  </button>
+                </li>
+              </ul>
+            </article>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <div
+      id="testCaseModal"
+      class="modal"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="testCaseModalTitle"
+    >
+      <button type="button" class="modal-overlay" data-modal-overlay aria-label="Close manual test creation panel"></button>
+      <section class="modal-panel" role="document">
+        <div class="flex items-start justify-between">
+          <div>
+            <h2 id="testCaseModalTitle" class="text-xl font-semibold text-gray-800">Create New Test Case</h2>
+          </div>
+          <button type="button" class="text-gray-400 hover:text-gray-600" data-modal-dismiss aria-label="Close panel">✕</button>
+        </div>
+
+        <div class="mt-6 space-y-5 text-sm text-gray-700">
+          <div>
+            <label for="manualTestDescription" class="block text-sm font-medium text-gray-700">Description</label>
+            <textarea
+              id="manualTestDescription"
+              class="mt-2 w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              rows="3"
+              placeholder="Describe what should be tested..."
+              data-modal-initial-focus
+            ></textarea>
+          </div>
+
+          <div>
+            <label for="manualTestType" class="block text-sm font-medium text-gray-700">Test Type</label>
+            <select
+              id="manualTestType"
+              class="mt-2 w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option>All</option>
+              <option>Cross-browser compatibility</option>
+              <option>Frontend bug detection</option>
+              <option>Business logic validation</option>
+              <option>Penetration testing</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Application Type</label>
+            <div class="flex gap-3 mt-2">
+              <button type="button" class="tab-trigger is-active" data-tab-target="web" data-tab-default="true">Web</button>
+              <button type="button" class="tab-trigger" data-tab-target="desktop">Desktop App</button>
+              <button type="button" class="tab-trigger" data-tab-target="mobile">Mobile</button>
+            </div>
+          </div>
+
+          <div data-tab-panel="web">
+            <label for="manualTestBrowser" class="block text-sm font-medium text-gray-700">Browser</label>
+            <select
+              id="manualTestBrowser"
+              class="mt-2 w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option>Google Chrome</option>
+              <option>Mozilla Firefox</option>
+              <option>Safari</option>
+              <option>Microsoft Edge</option>
+            </select>
+          </div>
+
+          <div data-tab-panel="desktop" hidden>
+            <label for="manualTestDesktop" class="block text-sm font-medium text-gray-700">Desktop environment</label>
+            <select
+              id="manualTestDesktop"
+              class="mt-2 w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option>Windows 11</option>
+              <option>macOS Sonoma</option>
+              <option>Ubuntu 22.04</option>
+            </select>
+          </div>
+
+          <div data-tab-panel="mobile" hidden>
+            <label for="manualTestMobile" class="block text-sm font-medium text-gray-700">Mobile platform</label>
+            <select
+              id="manualTestMobile"
+              class="mt-2 w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option>iOS</option>
+              <option>Android</option>
+              <option>HarmonyOS</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="manualTestOwner" class="block text-sm font-medium text-gray-700">Owner</label>
+            <input
+              id="manualTestOwner"
+              type="text"
+              class="mt-2 w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Assign to..."
+            />
+          </div>
+
+          <div>
+            <label for="manualTestDue" class="block text-sm font-medium text-gray-700">Due Date</label>
+            <input
+              id="manualTestDue"
+              type="date"
+              class="mt-2 w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+        </div>
+
+        <div class="mt-6 flex justify-end gap-3">
+          <button type="button" class="text-sm font-medium text-gray-500" data-modal-dismiss>Cancel</button>
+          <button type="button" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium shadow hover:bg-blue-700">
+            Create test case
+          </button>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

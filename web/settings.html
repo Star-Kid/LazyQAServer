@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LazyQA Account Settings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/sidebar.css" />
+    <script src="js/sidebar.js" defer></script>
+    <script src="js/settings-tabs.js" defer></script>
+  </head>
+  <body class="bg-gray-100 text-gray-900 font-inter">
+    <div class="sidebar-overlay" data-role="sidebar-overlay"></div>
+    <header class="mobile-top-bar">
+      <button
+        type="button"
+        class="mobile-menu-button"
+        data-role="mobile-menu-toggle"
+        aria-controls="app-sidebar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="mobile-menu-icon" aria-hidden="true"></span>
+      </button>
+      <div class="mobile-brand">
+        <span class="mobile-brand-dot" aria-hidden="true"></span>
+        <span>LazyQA</span>
+      </div>
+    </header>
+    <div class="app-shell">
+      <aside class="sidebar" data-role="app-sidebar" id="app-sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-logo" aria-label="LazyQA navigation">
+            <div class="sidebar-logo-mark" aria-hidden="true"></div>
+            <span class="sidebar-logo-text">LazyQA</span>
+          </div>
+          <div class="sidebar-project">
+            <div class="sidebar-project-placeholder" aria-hidden="true">🗂️</div>
+            <select class="sidebar-project-select" aria-label="Switch project">
+              <option>MazeKeeper</option>
+              <option>Locus Guide</option>
+              <option>Big Render</option>
+              <option class="add-new">+ Add new</option>
+            </select>
+          </div>
+          <nav class="sidebar-nav" aria-label="Primary">
+            <a href="Main.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">📊</span>
+              <span class="sidebar-label">Project Dashboard</span>
+            </a>
+            <a href="project-settings.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">⚙️</span>
+              <span class="sidebar-label">Project Settings</span>
+            </a>
+            <a href="documentation.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">📚</span>
+              <span class="sidebar-label">Documentation</span>
+            </a>
+            <a href="test-cases.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">🧪</span>
+              <span class="sidebar-label">Test Cases</span>
+            </a>
+            <a href="test-runs.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">🧭</span>
+              <span class="sidebar-label">Test Runs</span>
+            </a>
+            <a href="reports.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">📈</span>
+              <span class="sidebar-label">Reports</span>
+            </a>
+          </nav>
+        </div>
+        <div class="sidebar-footer">
+          <nav class="sidebar-nav" aria-label="Secondary">
+            <a href="plans.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">💳</span>
+              <span class="sidebar-label">Plans</span>
+            </a>
+            <a href="settings.html" class="sidebar-link active">
+              <span class="sidebar-icon" aria-hidden="true">⚙️</span>
+              <span class="sidebar-label">Settings</span>
+            </a>
+          </nav>
+          <div class="sidebar-version">v0.3.2 Beta</div>
+        </div>
+      </aside>
+      <main class="app-main">
+        <div class="app-content space-y-6">
+                <header class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                        <div class="space-y-1">
+                          <h1 class="text-3xl font-semibold text-gray-900">Account Settings</h1>
+                          <p class="text-sm text-gray-600">Centralise agent secrets, concurrency licenses, and user permissions in one secure console.</p>
+                        </div>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium shadow hover:bg-blue-700 transition">✅ Save profile</button>
+                      </header>
+
+                      <section class="bg-white border border-gray-200 rounded-2xl shadow-sm">
+                        <div class="border-b border-gray-200 px-6 pt-6">
+                          <div class="relative flex flex-wrap gap-2" role="tablist">
+                            <span class="absolute bottom-0 h-0.5 bg-blue-600 transition-all duration-300" data-tab-indicator></span>
+                            <button class="relative px-4 py-2 text-sm font-medium text-gray-600 rounded-t-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500" data-tab-target="automation" role="tab">Automation Agent API Key</button>
+                            <button class="relative px-4 py-2 text-sm font-medium text-gray-600 rounded-t-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500" data-tab-target="ai" role="tab">AI API Key</button>
+                            <button class="relative px-4 py-2 text-sm font-medium text-gray-600 rounded-t-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500" data-tab-target="licenses" role="tab">Licenses</button>
+                            <button class="relative px-4 py-2 text-sm font-medium text-gray-600 rounded-t-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500" data-tab-target="users" role="tab">Users</button>
+                          </div>
+                        </div>
+
+                        <div class="px-6 pb-8 pt-6 space-y-8">
+                          <section class="space-y-6" data-tab-panel="automation" role="tabpanel">
+                            <div class="space-y-3">
+                              <h2 class="text-xl font-semibold text-gray-900">Automation Agent API Keys</h2>
+                              <p class="text-sm text-gray-600 max-w-2xl">Generate scoped credentials for device agents that execute end-to-end test flows. Each key is bound to this workspace and can be revoked at any time.</p>
+                              <button class="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow hover:bg-blue-700 transition">🔑 Generate API Keys</button>
+                            </div>
+
+                            <div class="grid gap-4 md:grid-cols-3">
+                              <article class="flex flex-col gap-2 border border-gray-200 rounded-xl p-4 bg-gray-50">
+                                <div class="flex items-center gap-2 text-sm font-semibold text-gray-700">
+                                  <span class="text-xl">🪟</span>
+                                  <span>Windows</span>
+                                </div>
+                                <p class="text-xs text-gray-600">Install the desktop runner to orchestrate UI automation on Windows 10 and 11 hosts.</p>
+                                <a href="#" class="text-sm font-semibold text-blue-600 hover:text-blue-700">Download Automation Agent</a>
+                              </article>
+                              <article class="flex flex-col gap-2 border border-gray-200 rounded-xl p-4 bg-gray-50">
+                                <div class="flex items-center gap-2 text-sm font-semibold text-gray-700">
+                                  <span class="text-xl">🍎</span>
+                                  <span>macOS</span>
+                                </div>
+                                <p class="text-xs text-gray-600">Manage Safari, Chrome, and native app coverage on Apple Silicon or Intel Macs.</p>
+                                <a href="#" class="text-sm font-semibold text-blue-600 hover:text-blue-700">Download Automation Agent</a>
+                              </article>
+                              <article class="flex flex-col gap-2 border border-gray-200 rounded-xl p-4 bg-gray-50">
+                                <div class="flex items-center gap-2 text-sm font-semibold text-gray-700">
+                                  <span class="text-xl">🤖</span>
+                                  <span>Android</span>
+                                </div>
+                                <p class="text-xs text-gray-600">Stream instrumented builds and control physical or virtual Android devices remotely.</p>
+                                <a href="#" class="text-sm font-semibold text-blue-600 hover:text-blue-700">Download Automation Agent</a>
+                              </article>
+                            </div>
+
+                            <div class="space-y-3">
+                              <div class="flex items-center justify-between">
+                                <h3 class="text-lg font-semibold text-gray-900">Connected Device Agents</h3>
+                                <a href="#" class="text-sm font-semibold text-blue-600 hover:text-blue-700">Manage connections</a>
+                              </div>
+                              <div class="overflow-hidden border border-gray-200 rounded-xl">
+                                <table class="min-w-full divide-y divide-gray-200 text-sm">
+                                  <thead class="bg-gray-50 text-gray-600 uppercase tracking-wide text-xs">
+                                    <tr>
+                                      <th class="px-4 py-3 text-left font-semibold">Agent</th>
+                                      <th class="px-4 py-3 text-left font-semibold">Environment</th>
+                                      <th class="px-4 py-3 text-left font-semibold">Last Activity</th>
+                                      <th class="px-4 py-3 text-left font-semibold">Status</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody class="divide-y divide-gray-100 text-gray-700">
+                                    <tr>
+                                      <td class="px-4 py-3 font-medium">MazeKeeper Runner</td>
+                                      <td class="px-4 py-3">Windows 11 • Chrome 128</td>
+                                      <td class="px-4 py-3">2 minutes ago</td>
+                                      <td class="px-4 py-3"><span class="inline-flex items-center gap-1 rounded-full bg-green-100 text-green-700 px-2.5 py-1 text-xs font-semibold">● Online</span></td>
+                                    </tr>
+                                    <tr>
+                                      <td class="px-4 py-3 font-medium">Design Studio QA</td>
+                                      <td class="px-4 py-3">macOS Sonoma • Safari 17</td>
+                                      <td class="px-4 py-3">14 minutes ago</td>
+                                      <td class="px-4 py-3"><span class="inline-flex items-center gap-1 rounded-full bg-yellow-100 text-yellow-700 px-2.5 py-1 text-xs font-semibold">● Idle</span></td>
+                                    </tr>
+                                    <tr>
+                                      <td class="px-4 py-3 font-medium">Android Farm #3</td>
+                                      <td class="px-4 py-3">Android 15 • Pixel 7</td>
+                                      <td class="px-4 py-3">45 minutes ago</td>
+                                      <td class="px-4 py-3"><span class="inline-flex items-center gap-1 rounded-full bg-red-100 text-red-700 px-2.5 py-1 text-xs font-semibold">● Offline</span></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </section>
+
+                          <section class="space-y-6 hidden" data-tab-panel="ai" role="tabpanel">
+                            <div class="space-y-3">
+                              <h2 class="text-xl font-semibold text-gray-900">AI API Key</h2>
+                              <p class="text-sm text-gray-600 max-w-2xl">Provide your Google Gemini key so LazyQA can orchestrate exploratory testing, translate failure logs, and draft remediation steps automatically.</p>
+                            </div>
+                            <form class="max-w-lg space-y-4">
+                              <label class="block text-sm font-medium text-gray-700" for="gemini-api-key">Google Gemini API Key</label>
+                              <input id="gemini-api-key" type="text" placeholder="AIzSyD3..." class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200" />
+                              <div class="flex items-center gap-3">
+                                <p class="text-xs text-gray-500">Keys are encrypted at rest and rotated every 30 days.</p>
+                                <button type="button" class="ml-auto inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow hover:bg-blue-700 transition">💾 Save</button>
+                              </div>
+                            </form>
+                          </section>
+
+                          <section class="space-y-6 hidden" data-tab-panel="licenses" role="tabpanel">
+                            <div class="space-y-3">
+                              <h2 class="text-xl font-semibold text-gray-900">Licenses</h2>
+                              <p class="text-sm text-gray-600 max-w-2xl">Each license unlocks one concurrent automation slot. Add capacity to run tests in parallel across desktops, mobile labs, or hybrid device farms.</p>
+                            </div>
+                            <div class="grid gap-6 md:grid-cols-[1fr,auto]">
+                              <div class="space-y-4">
+                                <div class="flex items-center gap-4">
+                                  <div class="flex flex-col gap-1">
+                                    <span class="text-sm font-semibold text-gray-700">Active licenses</span>
+                                    <span class="text-2xl font-bold text-gray-900">1</span>
+                                  </div>
+                                  <div class="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-semibold">Default allocation</div>
+                                </div>
+                                <p class="text-xs text-gray-500">Licenses apply to the entire workspace, so every user can launch parallel runs without juggling seats.</p>
+                                <ul class="list-disc list-inside text-sm text-gray-600 space-y-2">
+                                  <li>Scale to additional agents for $9.99 per concurrent slot.</li>
+                                  <li>Billing prorates instantly—add capacity now, pay only for the active cycle.</li>
+                                  <li>Downgrades take effect at the next renewal to avoid sudden queue drops.</li>
+                                </ul>
+                              </div>
+                              <div class="border border-gray-200 rounded-xl p-4 bg-gray-50 flex flex-col gap-3 min-w-[220px]">
+                                <label class="text-sm font-semibold text-gray-700" for="license-quantity">Increase capacity</label>
+                                <div class="flex items-center gap-2">
+                                  <input id="license-quantity" data-license-quantity type="number" min="1" value="1" class="w-24 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200" />
+                                  <span class="text-sm text-gray-600">licenses × $9.99</span>
+                                </div>
+                                <div class="flex items-center justify-between text-sm font-semibold text-gray-700">
+                                  <span>Total due today</span>
+                                  <span aria-live="polite" data-license-total>$9.99</span>
+                                </div>
+                                <button type="button" class="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow hover:bg-blue-700 transition">➕ Add licenses</button>
+                                <p class="text-xs text-gray-500">New slots become available immediately after purchase.</p>
+                              </div>
+                            </div>
+                          </section>
+
+                          <section class="space-y-6 hidden" data-tab-panel="users" role="tabpanel">
+                            <div class="space-y-3">
+                              <h2 class="text-xl font-semibold text-gray-900">Users</h2>
+                              <p class="text-sm text-gray-600 max-w-2xl">Review who can trigger runs, edit scenarios, or manage billing for this project. Adjust permissions directly from the user roster.</p>
+                            </div>
+                            <div class="overflow-hidden border border-gray-200 rounded-xl">
+                              <table class="min-w-full divide-y divide-gray-200 text-sm">
+                                <thead class="bg-gray-50 text-gray-600 uppercase tracking-wide text-xs">
+                                  <tr>
+                                    <th class="px-4 py-3 text-left font-semibold">User</th>
+                                    <th class="px-4 py-3 text-left font-semibold">Email</th>
+                                    <th class="px-4 py-3 text-left font-semibold">Role</th>
+                                    <th class="px-4 py-3 text-left font-semibold">Project access</th>
+                                    <th class="px-4 py-3 text-left font-semibold">Last active</th>
+                                    <th class="px-4 py-3 text-right font-semibold">Actions</th>
+                                  </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100 text-gray-700">
+                                  <tr>
+                                    <td class="px-4 py-3 font-medium">Ava Reynolds</td>
+                                    <td class="px-4 py-3">ava@lazyqa.example</td>
+                                    <td class="px-4 py-3">Owner</td>
+                                    <td class="px-4 py-3">All projects</td>
+                                    <td class="px-4 py-3">Today • 10:14</td>
+                                    <td class="px-4 py-3 text-right">
+                                      <div class="relative inline-block text-left" data-user-menu>
+                                        <button type="button" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 text-xl leading-none text-gray-500 hover:text-gray-700 hover:border-gray-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500" aria-haspopup="true" aria-expanded="false" aria-label="Open actions for Ava Reynolds" data-user-menu-toggle>
+                                          ⋯
+                                        </button>
+                                        <div class="absolute right-0 mt-2 w-32 origin-top-right rounded-lg border border-gray-200 bg-white py-1 text-sm font-medium text-gray-700 shadow-lg hidden" role="menu" data-user-menu-list>
+                                          <button type="button" class="block w-full px-4 py-2 text-left hover:bg-gray-100" role="menuitem">Edit</button>
+                                          <button type="button" class="block w-full px-4 py-2 text-left text-red-600 hover:bg-red-50" role="menuitem">Delete</button>
+                                        </div>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="px-4 py-3 font-medium">Kenji Morita</td>
+                                    <td class="px-4 py-3">kenji@lazyqa.example</td>
+                                    <td class="px-4 py-3">QA Lead</td>
+                                    <td class="px-4 py-3">MazeKeeper, Locus Guide</td>
+                                    <td class="px-4 py-3">Yesterday</td>
+                                    <td class="px-4 py-3 text-right">
+                                      <div class="relative inline-block text-left" data-user-menu>
+                                        <button type="button" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 text-xl leading-none text-gray-500 hover:text-gray-700 hover:border-gray-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500" aria-haspopup="true" aria-expanded="false" aria-label="Open actions for Kenji Morita" data-user-menu-toggle>
+                                          ⋯
+                                        </button>
+                                        <div class="absolute right-0 mt-2 w-32 origin-top-right rounded-lg border border-gray-200 bg-white py-1 text-sm font-medium text-gray-700 shadow-lg hidden" role="menu" data-user-menu-list>
+                                          <button type="button" class="block w-full px-4 py-2 text-left hover:bg-gray-100" role="menuitem">Edit</button>
+                                          <button type="button" class="block w-full px-4 py-2 text-left text-red-600 hover:bg-red-50" role="menuitem">Delete</button>
+                                        </div>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="px-4 py-3 font-medium">Priya Shah</td>
+                                    <td class="px-4 py-3">priya@lazyqa.example</td>
+                                    <td class="px-4 py-3">Automation Engineer</td>
+                                    <td class="px-4 py-3">MazeKeeper</td>
+                                    <td class="px-4 py-3">2 days ago</td>
+                                    <td class="px-4 py-3 text-right">
+                                      <div class="relative inline-block text-left" data-user-menu>
+                                        <button type="button" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 text-xl leading-none text-gray-500 hover:text-gray-700 hover:border-gray-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500" aria-haspopup="true" aria-expanded="false" aria-label="Open actions for Priya Shah" data-user-menu-toggle>
+                                          ⋯
+                                        </button>
+                                        <div class="absolute right-0 mt-2 w-32 origin-top-right rounded-lg border border-gray-200 bg-white py-1 text-sm font-medium text-gray-700 shadow-lg hidden" role="menu" data-user-menu-list>
+                                          <button type="button" class="block w-full px-4 py-2 text-left hover:bg-gray-100" role="menuitem">Edit</button>
+                                          <button type="button" class="block w-full px-4 py-2 text-left text-red-600 hover:bg-red-50" role="menuitem">Delete</button>
+                                        </div>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-3">
+                              <button type="button" class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-100 transition">➕ Invite user</button>
+                              <button type="button" class="inline-flex items-center gap-2 border border-gray-300 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-50 transition">⚙️ Manage project roles</button>
+                            </div>
+                          </section>
+                        </div>
+                      </section>
+                </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LazyQA Project Settings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/sidebar.css" />
+    <style>
+      .tab-slider {
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%);
+        border-radius: 9999px;
+        transform: translateX(0);
+        transition: transform 200ms ease, width 200ms ease;
+        width: 0;
+        opacity: 0;
+      }
+
+      [data-tab-panel].hidden {
+        display: none;
+      }
+
+      [data-multi-select-panel] {
+        box-shadow: 0 12px 24px rgba(15, 23, 42, 0.1);
+      }
+    </style>
+    <script src="js/sidebar.js" defer></script>
+    <script src="js/project-settings-tabs.js" defer></script>
+  </head>
+  <body class="bg-gray-100 text-gray-900 font-inter">
+    <div class="sidebar-overlay" data-role="sidebar-overlay"></div>
+    <header class="mobile-top-bar">
+      <button
+        type="button"
+        class="mobile-menu-button"
+        data-role="mobile-menu-toggle"
+        aria-controls="app-sidebar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="mobile-menu-icon" aria-hidden="true"></span>
+      </button>
+      <div class="mobile-brand">
+        <span class="mobile-brand-dot" aria-hidden="true"></span>
+        <span>LazyQA</span>
+      </div>
+    </header>
+    <div class="app-shell">
+      <aside class="sidebar" data-role="app-sidebar" id="app-sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-logo" aria-label="LazyQA navigation">
+            <div class="sidebar-logo-mark" aria-hidden="true"></div>
+            <span class="sidebar-logo-text">LazyQA</span>
+          </div>
+          <div class="sidebar-project">
+            <div class="sidebar-project-placeholder" aria-hidden="true">🗂️</div>
+            <select class="sidebar-project-select" aria-label="Switch project">
+              <option>MazeKeeper</option>
+              <option>Locus Guide</option>
+              <option>Big Render</option>
+              <option class="add-new">+ Add new</option>
+            </select>
+          </div>
+          <nav class="sidebar-nav" aria-label="Primary">
+            <a href="Main.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">📊</span>
+              <span class="sidebar-label">Project Dashboard</span>
+            </a>
+            <a href="project-settings.html" class="sidebar-link active">
+              <span class="sidebar-icon" aria-hidden="true">⚙️</span>
+              <span class="sidebar-label">Project Settings</span>
+            </a>
+            <a href="documentation.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">📚</span>
+              <span class="sidebar-label">Documentation</span>
+            </a>
+            <a href="test-cases.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">🧪</span>
+              <span class="sidebar-label">Test Cases</span>
+            </a>
+            <a href="test-runs.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">🧭</span>
+              <span class="sidebar-label">Test Runs</span>
+            </a>
+            <a href="reports.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">📈</span>
+              <span class="sidebar-label">Reports</span>
+            </a>
+          </nav>
+        </div>
+        <div class="sidebar-footer">
+          <nav class="sidebar-nav" aria-label="Secondary">
+            <a href="plans.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">💳</span>
+              <span class="sidebar-label">Plans</span>
+            </a>
+            <a href="settings.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">⚙️</span>
+              <span class="sidebar-label">Settings</span>
+            </a>
+          </nav>
+          <div class="sidebar-version">v0.3.2 Beta</div>
+        </div>
+      </aside>
+      <main class="app-main">
+        <div class="app-content space-y-6">
+          <header class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+              <h1 class="text-2xl font-semibold text-gray-900">Project Settings</h1>
+              <p class="text-sm text-gray-600">
+                Configure integrations, default environments, and automation policies.
+              </p>
+            </div>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium shadow hover:bg-blue-700 transition">
+              💾 Save Changes
+            </button>
+          </header>
+
+          <section class="bg-white border border-gray-200 rounded-xl shadow p-6">
+            <div class="relative flex flex-wrap gap-3 border-b border-gray-200 pb-4 mb-6" data-tab-wrapper="primary">
+              <button
+                class="px-4 py-2 text-sm font-medium rounded-md text-gray-500 transition-colors duration-200"
+                data-tab-group="primary"
+                data-tab-target="general"
+                data-tab-default
+              >
+                General
+              </button>
+              <button
+                class="px-4 py-2 text-sm font-medium rounded-md text-gray-500 transition-colors duration-200"
+                data-tab-group="primary"
+                data-tab-target="automation"
+              >
+                Automation Policy
+              </button>
+              <button
+                class="px-4 py-2 text-sm font-medium rounded-md text-gray-500 transition-colors duration-200"
+                data-tab-group="primary"
+                data-tab-target="integration"
+              >
+                Integration
+              </button>
+              <span class="tab-slider" data-tab-indicator="primary"></span>
+            </div>
+
+            <div class="space-y-8">
+              <div data-tab-panel data-tab-group="primary" data-tab-section="general" class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-4 text-sm">
+                  <label class="flex flex-col gap-1 text-gray-700">
+                    <span>Project name</span>
+                    <input
+                      type="text"
+                      value="MazeKeeper"
+                      class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-200"
+                    />
+                  </label>
+                  <label class="flex flex-col gap-1 text-gray-700">
+                    <span>Default environment</span>
+                    <select class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-200">
+                      <option>Production</option>
+                      <option>Staging</option>
+                      <option>QA Sandbox</option>
+                    </select>
+                  </label>
+                </div>
+
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between">
+                    <h3 class="text-base font-semibold text-gray-800">Application type</h3>
+                    <span class="text-xs text-gray-500">Switch to view relevant configuration</span>
+                  </div>
+                  <div class="relative flex flex-wrap gap-2 border-b border-gray-200 pb-2 mb-4" data-tab-wrapper="application">
+                    <button
+                      class="px-3 py-1.5 text-sm font-medium rounded-md text-gray-500 transition-colors duration-200"
+                      data-tab-group="application"
+                      data-tab-target="web"
+                      data-tab-default
+                    >
+                      Web
+                    </button>
+                    <button
+                      class="px-3 py-1.5 text-sm font-medium rounded-md text-gray-500 transition-colors duration-200"
+                      data-tab-group="application"
+                      data-tab-target="desktop"
+                    >
+                      Desktop Application
+                    </button>
+                    <button
+                      class="px-3 py-1.5 text-sm font-medium rounded-md text-gray-500 transition-colors duration-200"
+                      data-tab-group="application"
+                      data-tab-target="mobile"
+                    >
+                      Mobile App
+                    </button>
+                    <span class="tab-slider" data-tab-indicator="application"></span>
+                  </div>
+
+                  <div class="space-y-6">
+                    <div data-tab-panel data-tab-group="application" data-tab-section="web" class="grid md:grid-cols-2 gap-4 text-sm">
+                      <label class="flex flex-col gap-1 text-gray-700">
+                        <span>Browsers</span>
+                        <div class="relative" data-multi-select data-multi-select-placeholder="Select browsers">
+                          <button
+                            type="button"
+                            class="w-full flex items-center justify-between border border-gray-300 rounded px-3 py-2 text-left text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                            data-multi-select-trigger
+                            aria-haspopup="listbox"
+                            aria-expanded="false"
+                          >
+                            <span data-multi-select-summary>Google Chrome, Mozilla Firefox</span>
+                            <svg class="w-4 h-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 9l6 6 6-6" />
+                            </svg>
+                          </button>
+                          <div
+                            class="absolute left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg overflow-hidden hidden z-10"
+                            data-multi-select-panel
+                            role="listbox"
+                            aria-multiselectable="true"
+                          >
+                            <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                              <input type="checkbox" value="Google Chrome" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option checked />
+                              <span>Google Chrome</span>
+                            </label>
+                            <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                              <input type="checkbox" value="Mozilla Firefox" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option checked />
+                              <span>Mozilla Firefox</span>
+                            </label>
+                            <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                              <input type="checkbox" value="Microsoft Edge" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option />
+                              <span>Microsoft Edge</span>
+                            </label>
+                            <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                              <input type="checkbox" value="Safari" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option />
+                              <span>Safari</span>
+                            </label>
+                          </div>
+                          <input type="hidden" name="browsers" value="Google Chrome,Mozilla Firefox" data-multi-select-input />
+                        </div>
+                      </label>
+                      <label class="flex flex-col gap-1 text-gray-700">
+                        <span>Primary URL</span>
+                        <input
+                          type="url"
+                          value="https://maze.example.com"
+                          class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-200"
+                        />
+                      </label>
+                    </div>
+
+                    <div data-tab-panel data-tab-group="application" data-tab-section="desktop" class="grid md:grid-cols-2 gap-4 text-sm hidden">
+                      <label class="flex flex-col gap-1 text-gray-700">
+                        <span class="font-medium text-gray-800">Desktop OS</span>
+                        <div class="relative" data-multi-select data-multi-select-placeholder="Select desktop operating systems">
+                          <button
+                            type="button"
+                            class="w-full flex items-center justify-between border border-gray-300 rounded px-3 py-2 text-left text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                            data-multi-select-trigger
+                            aria-haspopup="listbox"
+                            aria-expanded="false"
+                          >
+                            <span data-multi-select-summary>Windows, macOS</span>
+                            <svg class="w-4 h-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 9l6 6 6-6" />
+                            </svg>
+                          </button>
+                          <div
+                            class="absolute left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg overflow-hidden hidden z-10"
+                            data-multi-select-panel
+                            role="listbox"
+                            aria-multiselectable="true"
+                          >
+                            <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                              <input type="checkbox" value="Windows" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option checked />
+                              <span>Windows</span>
+                            </label>
+                            <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                              <input type="checkbox" value="macOS" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option checked />
+                              <span>macOS</span>
+                            </label>
+                            <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                              <input type="checkbox" value="Linux" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option />
+                              <span>Linux</span>
+                            </label>
+                          </div>
+                          <input type="hidden" name="desktop-os" value="Windows,macOS" data-multi-select-input />
+                        </div>
+                      </label>
+                      <label class="flex flex-col gap-1 text-gray-700">
+                        <span>Application name</span>
+                        <input
+                          type="text"
+                          placeholder="MazeKeeper Desktop"
+                          class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-200"
+                        />
+                      </label>
+                    </div>
+
+                    <div data-tab-panel data-tab-group="application" data-tab-section="mobile" class="grid md:grid-cols-2 gap-4 text-sm hidden">
+                      <label class="flex flex-col gap-1 text-gray-700">
+                        <span class="font-medium text-gray-800">Mobile OS</span>
+                        <div class="relative" data-multi-select data-multi-select-placeholder="Select mobile operating systems">
+                          <button
+                            type="button"
+                            class="w-full flex items-center justify-between border border-gray-300 rounded px-3 py-2 text-left text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                            data-multi-select-trigger
+                            aria-haspopup="listbox"
+                            aria-expanded="false"
+                          >
+                            <span data-multi-select-summary>iOS, Android</span>
+                            <svg class="w-4 h-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 9l6 6 6-6" />
+                            </svg>
+                          </button>
+                          <div
+                            class="absolute left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg overflow-hidden hidden z-10"
+                            data-multi-select-panel
+                            role="listbox"
+                            aria-multiselectable="true"
+                          >
+                            <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                              <input type="checkbox" value="iOS" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option checked />
+                              <span>iOS</span>
+                            </label>
+                            <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                              <input type="checkbox" value="Android" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option checked />
+                              <span>Android</span>
+                            </label>
+                            <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                              <input type="checkbox" value="HarmonyOS" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option />
+                              <span>HarmonyOS</span>
+                            </label>
+                          </div>
+                          <input type="hidden" name="mobile-os" value="iOS,Android" data-multi-select-input />
+                        </div>
+                      </label>
+                      <label class="flex flex-col gap-1 text-gray-700">
+                        <span>Application name</span>
+                        <input
+                          type="text"
+                          placeholder="MazeKeeper Mobile"
+                          class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-200"
+                        />
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div data-tab-panel data-tab-group="primary" data-tab-section="automation" class="space-y-4 hidden text-sm text-gray-700">
+                <p class="text-sm text-gray-600">Tune how LazyQA orchestrates automated discovery, regression, and guardrail checks.</p>
+                <label class="flex items-center gap-3">
+                  <input type="checkbox" checked class="w-4 h-4 text-blue-600 border-gray-300 rounded" />
+                  <span>Enable nightly AI exploration crawl</span>
+                </label>
+                <label class="flex items-center gap-3">
+                  <input type="checkbox" class="w-4 h-4 text-blue-600 border-gray-300 rounded" />
+                  <span>Require manual approval before production deployments</span>
+                </label>
+                <label class="flex items-center gap-3">
+                  <input type="checkbox" checked class="w-4 h-4 text-blue-600 border-gray-300 rounded" />
+                  <span>Sync defects with Jira integration</span>
+                </label>
+                <label class="flex items-center gap-3">
+                  <input type="checkbox" class="w-4 h-4 text-blue-600 border-gray-300 rounded" />
+                  <span>Escalate flaky tests to on-call QA via Slack</span>
+                </label>
+                <div class="bg-blue-50 border border-blue-100 text-blue-800 rounded-lg px-4 py-3 text-xs leading-relaxed">
+                  Automation policies run after each merge to the main branch and during nightly crawls. Adjust the cadence in the CI integration settings when needed.
+                </div>
+              </div>
+
+              <div data-tab-panel data-tab-group="primary" data-tab-section="integration" class="space-y-6 hidden text-sm text-gray-700">
+                <p class="text-sm text-gray-600">Connect LazyQA to your existing delivery tooling. Each service can be toggled individually.</p>
+
+                <div class="space-y-4">
+                  <h3 class="text-base font-semibold text-gray-800">Tracking systems</h3>
+                  <div class="grid md:grid-cols-2 gap-3">
+                    <div class="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg px-4 py-3">
+                      <span>Jira</span>
+                      <button class="px-3 py-1.5 text-xs font-semibold text-white bg-blue-600 rounded-md shadow hover:bg-blue-700">Connect</button>
+                    </div>
+                    <div class="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg px-4 py-3">
+                      <span>Trello</span>
+                      <button class="px-3 py-1.5 text-xs font-semibold text-white bg-blue-600 rounded-md shadow hover:bg-blue-700">Connect</button>
+                    </div>
+                    <div class="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg px-4 py-3">
+                      <span>Asana</span>
+                      <button class="px-3 py-1.5 text-xs font-semibold text-white bg-blue-600 rounded-md shadow hover:bg-blue-700">Connect</button>
+                    </div>
+                    <div class="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg px-4 py-3">
+                      <span>Bootcamp</span>
+                      <button class="px-3 py-1.5 text-xs font-semibold text-white bg-blue-600 rounded-md shadow hover:bg-blue-700">Connect</button>
+                    </div>
+                    <div class="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg px-4 py-3">
+                      <span>YouTrack</span>
+                      <span class="px-3 py-1.5 text-xs font-semibold text-green-700 bg-green-100 rounded-md border border-green-200">Connected</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="space-y-4">
+                  <h3 class="text-base font-semibold text-gray-800">Notification system</h3>
+                  <div class="grid md:grid-cols-2 gap-3">
+                    <div class="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg px-4 py-3">
+                      <span>Slack</span>
+                      <span class="px-3 py-1.5 text-xs font-semibold text-green-700 bg-green-100 rounded-md border border-green-200">Connected</span>
+                    </div>
+                    <div class="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg px-4 py-3">
+                      <span>Telegram</span>
+                      <button class="px-3 py-1.5 text-xs font-semibold text-white bg-blue-600 rounded-md shadow hover:bg-blue-700">Connect</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="space-y-4">
+                  <h3 class="text-base font-semibold text-gray-800">Repository</h3>
+                  <div class="grid md:grid-cols-2 gap-3">
+                    <div class="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg px-4 py-3">
+                      <span>GitHub</span>
+                      <span class="px-3 py-1.5 text-xs font-semibold text-green-700 bg-green-100 rounded-md border border-green-200">Connected</span>
+                    </div>
+                    <div class="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg px-4 py-3">
+                      <span>GitLab</span>
+                      <button class="px-3 py-1.5 text-xs font-semibold text-white bg-blue-600 rounded-md shadow hover:bg-blue-700">Connect</button>
+                    </div>
+                    <div class="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg px-4 py-3">
+                      <span>Bitbucket</span>
+                      <button class="px-3 py-1.5 text-xs font-semibold text-white bg-blue-600 rounded-md shadow hover:bg-blue-700">Connect</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="space-y-4">
+                  <h3 class="text-base font-semibold text-gray-800">Data</h3>
+                  <div class="grid md:grid-cols-2 gap-3">
+                    <div class="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg px-4 py-3">
+                      <span>Confluence</span>
+                      <button class="px-3 py-1.5 text-xs font-semibold text-white bg-blue-600 rounded-md shadow hover:bg-blue-700">Connect</button>
+                    </div>
+                    <div class="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg px-4 py-3">
+                      <span>Notion</span>
+                      <button class="px-3 py-1.5 text-xs font-semibold text-white bg-blue-600 rounded-md shadow hover:bg-blue-700">Connect</button>
+                    </div>
+                    <div class="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg px-4 py-3">
+                      <span>Google Docs</span>
+                      <span class="px-3 py-1.5 text-xs font-semibold text-green-700 bg-green-100 rounded-md border border-green-200">Connected</span>
+                    </div>
+                    <div class="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg px-4 py-3">
+                      <span>GitHub Wiki</span>
+                      <button class="px-3 py-1.5 text-xs font-semibold text-white bg-blue-600 rounded-md shadow hover:bg-blue-700">Connect</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="bg-white border border-gray-200 rounded-xl shadow p-6">
+            <h2 class="text-lg font-semibold text-gray-800 mb-2">Environments</h2>
+            <div class="overflow-x-auto">
+              <table class="min-w-full text-sm text-left text-gray-600">
+                <thead class="text-xs uppercase text-gray-500">
+                  <tr>
+                    <th class="py-2">Name</th>
+                    <th class="py-2">URL</th>
+                    <th class="py-2">Status</th>
+                    <th class="py-2">Last sync</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                  <tr>
+                    <td class="py-3 font-medium text-gray-800">Production</td>
+                    <td class="py-3">https://maze.example.com</td>
+                    <td class="py-3"><span class="bg-green-100 text-green-800 px-2 py-0.5 rounded text-xs font-semibold">Connected</span></td>
+                    <td class="py-3">2 minutes ago</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 font-medium text-gray-800">Staging</td>
+                    <td class="py-3">https://staging.maze.example.com</td>
+                    <td class="py-3"><span class="bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded text-xs font-semibold">Degraded</span></td>
+                    <td class="py-3">18 minutes ago</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 font-medium text-gray-800">QA Sandbox</td>
+                    <td class="py-3">https://qa.maze.example.com</td>
+                    <td class="py-3"><span class="bg-red-100 text-red-700 px-2 py-0.5 rounded text-xs font-semibold">Offline</span></td>
+                    <td class="py-3">1 hour ago</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

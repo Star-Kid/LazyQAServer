@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LazyQA Test Runs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/sidebar.css" />
+    <style>
+      select option.add-new {
+        color: #3b82f6;
+        font-weight: 500;
+      }
+      .running-card-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      @media (min-width: 768px) {
+        .running-card-grid {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) auto;
+          grid-template-rows: repeat(3, auto);
+          gap: 12px 24px;
+          align-items: start;
+        }
+        .running-card__title {
+          grid-row: 1;
+          grid-column: 1;
+        }
+        .running-card__status {
+          grid-row: 1;
+          grid-column: 2;
+          justify-self: end;
+          text-align: right;
+        }
+        .running-card__description {
+          grid-row: 2;
+          grid-column: 1;
+        }
+        .running-card__progress {
+          grid-row: 2;
+          grid-column: 2;
+          justify-self: end;
+          text-align: right;
+          min-width: 200px;
+        }
+        .running-card__meta {
+          grid-row: 3;
+          grid-column: 1;
+        }
+        .running-card__actions {
+          grid-row: 3;
+          grid-column: 2;
+          justify-self: end;
+        }
+      }
+    </style>
+    <script src="js/sidebar.js" defer></script>
+    <script src="js/test-case-navigation.js" defer></script>
+  </head>
+  <body class="bg-gray-100 text-gray-900 font-inter">
+    <div class="sidebar-overlay" data-role="sidebar-overlay"></div>
+    <header class="mobile-top-bar">
+      <button
+        type="button"
+        class="mobile-menu-button"
+        data-role="mobile-menu-toggle"
+        aria-controls="app-sidebar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="mobile-menu-icon" aria-hidden="true"></span>
+      </button>
+      <div class="mobile-brand">
+        <span class="mobile-brand-dot" aria-hidden="true"></span>
+        <span>LazyQA</span>
+      </div>
+    </header>
+    <div class="app-shell">
+      <aside class="sidebar" data-role="app-sidebar" id="app-sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-logo" aria-label="LazyQA navigation">
+            <div class="sidebar-logo-mark" aria-hidden="true"></div>
+            <span class="sidebar-logo-text">LazyQA</span>
+          </div>
+          <div class="sidebar-project">
+            <div class="sidebar-project-placeholder" aria-hidden="true">🗂️</div>
+            <select class="sidebar-project-select" aria-label="Switch project">
+              <option>MazeKeeper</option>
+              <option>Locus Guide</option>
+              <option>Big Render</option>
+              <option class="add-new">+ Add new</option>
+            </select>
+          </div>
+          <nav class="sidebar-nav" aria-label="Primary">
+            <a href="Main.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">📊</span>
+              <span class="sidebar-label">Project Dashboard</span>
+            </a>
+            <a href="project-settings.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">⚙️</span>
+              <span class="sidebar-label">Project Settings</span>
+            </a>
+            <a href="documentation.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">📚</span>
+              <span class="sidebar-label">Documentation</span>
+            </a>
+            <a href="test-cases.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">🧪</span>
+              <span class="sidebar-label">Test Cases</span>
+            </a>
+            <a href="test-runs.html" class="sidebar-link active">
+              <span class="sidebar-icon" aria-hidden="true">🧭</span>
+              <span class="sidebar-label">Test Runs</span>
+            </a>
+            <a href="reports.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">📈</span>
+              <span class="sidebar-label">Reports</span>
+            </a>
+          </nav>
+        </div>
+        <div class="sidebar-footer">
+          <nav class="sidebar-nav" aria-label="Secondary">
+            <a href="plans.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">💳</span>
+              <span class="sidebar-label">Plans</span>
+            </a>
+            <a href="settings.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">⚙️</span>
+              <span class="sidebar-label">Settings</span>
+            </a>
+          </nav>
+          <div class="sidebar-version">v0.3.2 Beta</div>
+        </div>
+      </aside>
+      <main class="app-main">
+        <div class="app-content space-y-6">
+                <header
+                        class="flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-slate-200 bg-gradient-to-r from-indigo-50 via-white to-cyan-50 px-6 py-5 text-sm shadow-sm backdrop-blur"
+                      >
+                        <div class="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-wide text-indigo-600">
+                          <span class="inline-flex items-center gap-2 rounded-full bg-indigo-500/10 px-3 py-1">
+                            <span class="h-2 w-2 animate-pulse rounded-full bg-indigo-500"></span>
+                            Active workspace
+                          </span>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-2 text-sm font-medium text-slate-700">
+                          <span class="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1.5 shadow-sm ring-1 ring-slate-200">
+                            <span>🧪</span>
+                            <span>Tests in queue: 5</span>
+                          </span>
+                          <span class="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1.5 shadow-sm ring-1 ring-slate-200">
+                            <span>💻</span>
+                            <span>3 sessions</span>
+                          </span>
+                          <span class="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1.5 shadow-sm ring-1 ring-slate-200">
+                            <span>⏱</span>
+                            <span>12 today</span>
+                          </span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                          <div class="text-right">
+                            <p class="text-sm font-semibold text-slate-900">Anastasia QA</p>
+                            <p class="text-xs text-slate-500">Lead tester</p>
+                          </div>
+                          <div class="relative inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-sky-500 text-base font-semibold text-white shadow-sm">
+                            AQ
+                            <span class="absolute bottom-0 right-0 inline-flex h-3 w-3 rounded-full border-2 border-white bg-emerald-400"></span>
+                          </div>
+                        </div>
+                      </header>
+
+                      <div class="flex flex-wrap items-center justify-between gap-4">
+                        <div>
+                          <h1 class="text-2xl font-semibold text-gray-900">Active Test Runs</h1>
+                          <p class="text-sm text-gray-600">Monitor live automation without the distraction of historical timelines.</p>
+                        </div>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium shadow hover:bg-blue-700 transition">🚀 Trigger Run</button>
+                      </div>
+
+                      <section class="space-y-3">
+                        <h2 class="text-base font-semibold text-gray-800 tracking-tight">Running Test Cases</h2>
+                        <div class="space-y-3">
+                          <div
+                            class="bg-white p-4 rounded-lg shadow border border-gray-200 relative overflow-hidden text-sm cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                            data-test-case-target="test-case-details.html"
+                            tabindex="0"
+                            role="link"
+                            aria-label="Open details for Checkout Flow Smoke Test"
+                          >
+                            <div class="absolute left-0 top-0 h-full w-1 bg-blue-500"></div>
+                            <div class="running-card-grid pl-3 md:pr-4">
+                              <div class="running-card__title">
+                                <div class="font-medium text-gray-800 text-[15px]">Checkout Flow Smoke Test</div>
+                              </div>
+                              <div class="running-card__status flex flex-col items-start md:items-end text-xs">
+                                <div class="inline-flex items-center gap-2">
+                                  <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded font-semibold">Running</span>
+                                  <span class="inline-flex items-center gap-1 text-sm font-semibold text-green-600">
+                                    <span class="text-green-500">⏱</span>
+                                    <span>2m 35s</span>
+                                  </span>
+                                </div>
+                              </div>
+                              <div class="running-card__description text-gray-600">
+                                Validate happy path purchase including payment authorization
+                              </div>
+                              <div class="running-card__progress">
+                                <div class="text-xs text-gray-600 font-medium">12 / 20 steps (60%)</div>
+                                <div class="mt-1 h-1.5 bg-gray-200 rounded-full">
+                                  <div class="h-1.5 bg-blue-500 rounded-full" style="width: 60%"></div>
+                                </div>
+                              </div>
+                              <div class="running-card__meta flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-500">
+                                <span class="text-gray-400">Last updated: Oct 16, 2025</span>
+                                <span class="inline-flex items-center gap-1 font-medium text-gray-700">Run 12×</span>
+                                <span class="inline-flex items-center gap-1">
+                                  <span class="text-gray-400">💻</span>
+                                  <span>Agent: macOS-local-01</span>
+                                </span>
+                              </div>
+                              <div class="running-card__actions flex items-center gap-2">
+                                <button type="button" class="text-blue-500 hover:text-blue-700" aria-label="Pause run">⏸</button>
+                                <button type="button" class="text-red-500 hover:text-red-700" aria-label="Stop run">⏹</button>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div
+                            class="bg-white p-4 rounded-lg shadow border border-gray-200 relative overflow-hidden text-sm cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                            data-test-case-target="test-case-details.html"
+                            tabindex="0"
+                            role="link"
+                            aria-label="Open details for Cross-Browser Layout Regression"
+                          >
+                            <div class="absolute left-0 top-0 h-full w-1 bg-slate-500"></div>
+                            <div class="running-card-grid pl-3 md:pr-4">
+                              <div class="running-card__title">
+                                <div class="font-medium text-gray-800 text-[15px]">Cross-Browser Layout Regression</div>
+                              </div>
+                              <div class="running-card__status flex flex-col items-start md:items-end text-xs">
+                                <div class="inline-flex items-center gap-2">
+                                  <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded font-semibold">Completed</span>
+                                  <span class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600">
+                                    <span class="text-blue-500">⏱</span>
+                                    <span>47s</span>
+                                  </span>
+                                </div>
+                              </div>
+                              <div class="running-card__description text-gray-600">
+                                Compare critical layout checkpoints across supported browsers
+                              </div>
+                              <div class="running-card__progress">
+                                <div class="text-xs text-gray-600 font-medium">20 / 20 steps (100%)</div>
+                                <div class="mt-1 h-1.5 bg-gray-200 rounded-full">
+                                  <div class="h-1.5 bg-blue-500 rounded-full" style="width: 100%"></div>
+                                </div>
+                              </div>
+                              <div class="running-card__meta flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-500">
+                                <span class="text-gray-400">Last updated: Oct 15, 2025</span>
+                                <span class="inline-flex items-center gap-1 font-medium text-gray-700">12 runs total</span>
+                                <span class="inline-flex items-center gap-1">
+                                  <span class="text-gray-400">💻</span>
+                                  <span>Agent: macOS-local-01</span>
+                                </span>
+                              </div>
+                              <div class="running-card__actions flex items-center gap-2">
+                                <button type="button" class="text-blue-300 cursor-not-allowed" aria-label="Pause run" disabled>⏸</button>
+                                <button type="button" class="text-red-300 cursor-not-allowed" aria-label="Stop run" disabled>⏹</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                      <section class="rounded-2xl border border-dashed border-slate-200 bg-white/70 p-10 text-center text-sm text-slate-500 shadow-inner">
+                        <h2 class="text-xl font-semibold text-slate-800">Waiting for the next batch</h2>
+                        <p class="mt-3 max-w-2xl mx-auto leading-relaxed">
+                          Historical reports have been archived for now. Keep this panel open while new automation cycles execute to watch status updates roll in without competing cards.
+                        </p>
+                        <div class="mt-6 flex flex-wrap justify-center gap-3 text-sm font-medium">
+                          <a href="reports.html" class="inline-flex items-center gap-2 rounded-full border border-slate-300 px-5 py-2 text-slate-700 hover:bg-slate-50 transition">
+                            <span>📚</span>
+                            <span>View archived reports</span>
+                          </a>
+                          <a href="documentation.html" class="inline-flex items-center gap-2 rounded-full border border-slate-300 px-5 py-2 text-slate-700 hover:bg-slate-50 transition">
+                            <span>🧭</span>
+                            <span>Review run playbooks</span>
+                          </a>
+                        </div>
+                      </section>
+                </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

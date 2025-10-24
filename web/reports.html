@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LazyQA Reports</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/sidebar.css" />
+    <script src="js/sidebar.js" defer></script>
+  </head>
+  <body class="bg-gray-100 text-gray-900 font-inter">
+    <div class="sidebar-overlay" data-role="sidebar-overlay"></div>
+    <header class="mobile-top-bar">
+      <button
+        type="button"
+        class="mobile-menu-button"
+        data-role="mobile-menu-toggle"
+        aria-controls="app-sidebar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="mobile-menu-icon" aria-hidden="true"></span>
+      </button>
+      <div class="mobile-brand">
+        <span class="mobile-brand-dot" aria-hidden="true"></span>
+        <span>LazyQA</span>
+      </div>
+    </header>
+    <div class="app-shell">
+      <aside class="sidebar" data-role="app-sidebar" id="app-sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-logo" aria-label="LazyQA navigation">
+            <div class="sidebar-logo-mark" aria-hidden="true"></div>
+            <span class="sidebar-logo-text">LazyQA</span>
+          </div>
+          <div class="sidebar-project">
+            <div class="sidebar-project-placeholder" aria-hidden="true">🗂️</div>
+            <select class="sidebar-project-select" aria-label="Switch project">
+              <option>MazeKeeper</option>
+              <option>Locus Guide</option>
+              <option>Big Render</option>
+              <option class="add-new">+ Add new</option>
+            </select>
+          </div>
+          <nav class="sidebar-nav" aria-label="Primary">
+            <a href="Main.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">📊</span>
+              <span class="sidebar-label">Project Dashboard</span>
+            </a>
+            <a href="project-settings.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">⚙️</span>
+              <span class="sidebar-label">Project Settings</span>
+            </a>
+            <a href="documentation.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">📚</span>
+              <span class="sidebar-label">Documentation</span>
+            </a>
+            <a href="test-cases.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">🧪</span>
+              <span class="sidebar-label">Test Cases</span>
+            </a>
+            <a href="test-runs.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">🧭</span>
+              <span class="sidebar-label">Test Runs</span>
+            </a>
+            <a href="reports.html" class="sidebar-link active">
+              <span class="sidebar-icon" aria-hidden="true">📈</span>
+              <span class="sidebar-label">Reports</span>
+            </a>
+          </nav>
+        </div>
+        <div class="sidebar-footer">
+          <nav class="sidebar-nav" aria-label="Secondary">
+            <a href="plans.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">💳</span>
+              <span class="sidebar-label">Plans</span>
+            </a>
+            <a href="settings.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">⚙️</span>
+              <span class="sidebar-label">Settings</span>
+            </a>
+          </nav>
+          <div class="sidebar-version">v0.3.2 Beta</div>
+        </div>
+      </aside>
+      <main class="app-main">
+        <div class="app-content space-y-6">
+                <header class="flex justify-between items-center">
+                        <div>
+                          <h1 class="text-2xl font-semibold text-gray-900">Insights &amp; Reports</h1>
+                          <p class="text-sm text-gray-600">Monitor release readiness, historical quality trends, and AI exploration coverage.</p>
+                        </div>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium shadow hover:bg-blue-700 transition">⬇️ Export</button>
+                      </header>
+
+                      <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <article class="bg-white border border-gray-200 rounded-xl shadow p-6 space-y-3">
+                          <h2 class="text-lg font-semibold text-gray-800">Release Readiness</h2>
+                          <p class="text-sm text-gray-600">Automatically generated summary of the last 7 days.</p>
+                          <ul class="space-y-2 text-sm text-gray-700">
+                            <li class="flex justify-between"><span>Regression coverage</span><span class="font-semibold text-gray-900">92%</span></li>
+                            <li class="flex justify-between"><span>Critical defects</span><span class="font-semibold text-red-600">5 open</span></li>
+                            <li class="flex justify-between"><span>Exploration depth</span><span class="font-semibold text-blue-600">48 flows</span></li>
+                          </ul>
+                        </article>
+                        <article class="bg-white border border-gray-200 rounded-xl shadow p-6 space-y-3">
+                          <h2 class="text-lg font-semibold text-gray-800">Stability Index</h2>
+                          <p class="text-sm text-gray-600">Weighted signal from flaky tests, reruns, and hotfixes.</p>
+                          <div class="text-3xl font-bold text-gray-900">7.8</div>
+                          <p class="text-xs text-gray-500">Goal ≥ 8.5 · last sprint average: 7.1</p>
+                        </article>
+                        <article class="bg-white border border-gray-200 rounded-xl shadow p-6 space-y-3">
+                          <h2 class="text-lg font-semibold text-gray-800">AI Exploration Coverage</h2>
+                          <p class="text-sm text-gray-600">Unique flows visited by the AI crawler across environments.</p>
+                          <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-blue-500 h-2 rounded-full" style="width: 62%"></div>
+                          </div>
+                          <p class="text-xs text-gray-500">62% of mapped journeys explored · 14 newly discovered paths</p>
+                        </article>
+                      </section>
+
+                      <section class="bg-white border border-gray-200 rounded-xl shadow p-6">
+                        <div class="flex items-center justify-between mb-4">
+                          <h2 class="text-lg font-semibold text-gray-800">Weekly Trend</h2>
+                          <button class="text-sm text-blue-600 font-medium">Switch to monthly</button>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6 text-sm text-gray-700">
+                          <div>
+                            <h3 class="font-semibold text-gray-800 mb-2">Pass rate</h3>
+                            <p class="text-gray-600 leading-relaxed">Pass rate improved by 4% compared with the previous sprint due to stabilizing authentication flows and enhanced retries in the checkout suite.</p>
+                          </div>
+                          <div>
+                            <h3 class="font-semibold text-gray-800 mb-2">Top risks</h3>
+                            <ul class="list-disc ml-5 space-y-1">
+                              <li>Checkout payment flakiness on Safari 17</li>
+                              <li>Latency spikes on EU West environment</li>
+                              <li>Unreviewed AI discoveries pending triage</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </section>
+
+                      <section class="bg-white border border-gray-200 rounded-xl shadow p-6">
+                        <div class="flex items-center justify-between mb-4">
+                          <h2 class="text-lg font-semibold text-gray-800">Report Library</h2>
+                          <button class="text-sm text-blue-600 font-medium">＋ Schedule Delivery</button>
+                        </div>
+                        <div class="overflow-x-auto">
+                          <table class="min-w-full text-sm text-left text-gray-700">
+                            <thead class="text-xs uppercase text-gray-500">
+                              <tr>
+                                <th class="py-2">Name</th>
+                                <th class="py-2">Owner</th>
+                                <th class="py-2">Format</th>
+                                <th class="py-2">Last generated</th>
+                                <th class="py-2 text-right">Download</th>
+                              </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                              <tr>
+                                <td class="py-3">Weekly QA Pulse</td>
+                                <td class="py-3">John Doe</td>
+                                <td class="py-3">PDF</td>
+                                <td class="py-3">Oct 15, 2025 · 08:00 UTC</td>
+                                <td class="py-3 text-right"><a href="#" class="text-blue-600 font-medium">Download</a></td>
+                              </tr>
+                              <tr>
+                                <td class="py-3">Executive Summary</td>
+                                <td class="py-3">Jane Smith</td>
+                                <td class="py-3">Slides</td>
+                                <td class="py-3">Oct 14, 2025 · 17:20 UTC</td>
+                                <td class="py-3 text-right"><a href="#" class="text-blue-600 font-medium">Download</a></td>
+                              </tr>
+                              <tr>
+                                <td class="py-3">AI Discoveries Digest</td>
+                                <td class="py-3">Automation</td>
+                                <td class="py-3">Markdown</td>
+                                <td class="py-3">Oct 13, 2025 · 09:45 UTC</td>
+                                <td class="py-3 text-right"><a href="#" class="text-blue-600 font-medium">Download</a></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </section>
+                </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

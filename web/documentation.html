@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LazyQA Documentation Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/sidebar.css" />
+    <script src="js/sidebar.js" defer></script>
+  </head>
+  <body class="bg-gray-100 text-gray-900 font-inter">
+    <div class="sidebar-overlay" data-role="sidebar-overlay"></div>
+    <header class="mobile-top-bar">
+      <button
+        type="button"
+        class="mobile-menu-button"
+        data-role="mobile-menu-toggle"
+        aria-controls="app-sidebar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="mobile-menu-icon" aria-hidden="true"></span>
+      </button>
+      <div class="mobile-brand">
+        <span class="mobile-brand-dot" aria-hidden="true"></span>
+        <span>LazyQA</span>
+      </div>
+    </header>
+    <div class="app-shell">
+      <aside class="sidebar" data-role="app-sidebar" id="app-sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-logo" aria-label="LazyQA navigation">
+            <div class="sidebar-logo-mark" aria-hidden="true"></div>
+            <span class="sidebar-logo-text">LazyQA</span>
+          </div>
+          <div class="sidebar-project">
+            <div class="sidebar-project-placeholder" aria-hidden="true">🗂️</div>
+            <select class="sidebar-project-select" aria-label="Switch project">
+              <option>MazeKeeper</option>
+              <option>Locus Guide</option>
+              <option>Big Render</option>
+              <option class="add-new">+ Add new</option>
+            </select>
+          </div>
+          <nav class="sidebar-nav" aria-label="Primary">
+            <a href="Main.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">📊</span>
+              <span class="sidebar-label">Project Dashboard</span>
+            </a>
+            <a href="project-settings.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">⚙️</span>
+              <span class="sidebar-label">Project Settings</span>
+            </a>
+            <a href="documentation.html" class="sidebar-link active">
+              <span class="sidebar-icon" aria-hidden="true">📚</span>
+              <span class="sidebar-label">Documentation</span>
+            </a>
+            <a href="test-cases.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">🧪</span>
+              <span class="sidebar-label">Test Cases</span>
+            </a>
+            <a href="test-runs.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">🧭</span>
+              <span class="sidebar-label">Test Runs</span>
+            </a>
+            <a href="reports.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">📈</span>
+              <span class="sidebar-label">Reports</span>
+            </a>
+          </nav>
+        </div>
+        <div class="sidebar-footer">
+          <nav class="sidebar-nav" aria-label="Secondary">
+            <a href="plans.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">💳</span>
+              <span class="sidebar-label">Plans</span>
+            </a>
+            <a href="settings.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">⚙️</span>
+              <span class="sidebar-label">Settings</span>
+            </a>
+          </nav>
+          <div class="sidebar-version">v0.3.2 Beta</div>
+        </div>
+      </aside>
+      <main class="app-main">
+        <div class="app-content space-y-6">
+          <header class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+              <h1 class="text-2xl font-semibold text-gray-900">Documentation Hub</h1>
+              <p class="text-sm text-gray-600">
+                Centralize onboarding playbooks, test data specs, and troubleshooting guides.
+              </p>
+            </div>
+            <a
+              href="test-cases.html"
+              class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium shadow hover:bg-blue-700 transition"
+            >
+              📄 Attach to Test Case
+            </a>
+          </header>
+
+          <section class="bg-white border border-gray-200 rounded-xl shadow p-6">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="text-lg font-semibold text-gray-800">Knowledge Base</h2>
+              <button class="text-sm text-blue-600 font-medium">＋ New Article</button>
+            </div>
+            <div class="grid md:grid-cols-2 gap-4 text-sm text-gray-700">
+              <article class="border border-gray-200 rounded-lg p-4 hover:border-blue-200 transition">
+                <h3 class="font-semibold text-gray-800">Login Domain Checklist</h3>
+                <p class="text-xs text-gray-500 mb-3">Last updated 2 hours ago · by John Doe</p>
+                <ul class="list-disc ml-5 space-y-1">
+                  <li>Edge cases for MFA and password resets</li>
+                  <li>Service dependencies and required secrets</li>
+                  <li>Expected API responses &amp; schema</li>
+                </ul>
+              </article>
+              <article class="border border-gray-200 rounded-lg p-4 hover:border-blue-200 transition">
+                <h3 class="font-semibold text-gray-800">Performance Benchmarks</h3>
+                <p class="text-xs text-gray-500 mb-3">Last updated 1 day ago · by Jane Smith</p>
+                <ul class="list-disc ml-5 space-y-1">
+                  <li>Baseline render times for dashboards</li>
+                  <li>API throughput thresholds per region</li>
+                  <li>Alert thresholds for LazyQA monitors</li>
+                </ul>
+              </article>
+              <article class="border border-gray-200 rounded-lg p-4 hover:border-blue-200 transition">
+                <h3 class="font-semibold text-gray-800">Test Data Contracts</h3>
+                <p class="text-xs text-gray-500 mb-3">Last updated 3 days ago · by Alex Roe</p>
+                <ul class="list-disc ml-5 space-y-1">
+                  <li>Seed accounts and permissions</li>
+                  <li>Billing scenarios for regression suites</li>
+                  <li>Cleanup scripts and rollback strategy</li>
+                </ul>
+              </article>
+              <article class="border border-gray-200 rounded-lg p-4 hover:border-blue-200 transition">
+                <h3 class="font-semibold text-gray-800">Release Validation Plan</h3>
+                <p class="text-xs text-gray-500 mb-3">Last updated 5 days ago · by Maria Lopez</p>
+                <ul class="list-disc ml-5 space-y-1">
+                  <li>Exit criteria per environment</li>
+                  <li>Stakeholder sign-off checklist</li>
+                  <li>Rollback triggers &amp; communication matrix</li>
+                </ul>
+              </article>
+            </div>
+          </section>
+
+          <section class="bg-white border border-gray-200 rounded-xl shadow p-6 space-y-4">
+            <div class="flex justify-between items-center">
+              <h2 class="text-lg font-semibold text-gray-800">Linked Assets</h2>
+              <button class="text-sm text-blue-600 font-medium">Upload PDF</button>
+            </div>
+            <ul class="divide-y divide-gray-200 text-sm text-gray-700">
+              <li class="py-3 flex justify-between items-center">
+                <div>
+                  <p class="font-medium text-gray-800">MazeKeeper API Spec v2.4</p>
+                  <p class="text-xs text-gray-500">OpenAPI · 2.5 MB</p>
+                </div>
+                <a href="#" class="text-blue-600 text-sm font-medium">Download</a>
+              </li>
+              <li class="py-3 flex justify-between items-center">
+                <div>
+                  <p class="font-medium text-gray-800">QA Onboarding Flowchart</p>
+                  <p class="text-xs text-gray-500">Diagram · 1.1 MB</p>
+                </div>
+                <a href="#" class="text-blue-600 text-sm font-medium">Preview</a>
+              </li>
+              <li class="py-3 flex justify-between items-center">
+                <div>
+                  <p class="font-medium text-gray-800">Accessibility Testing Guide</p>
+                  <p class="text-xs text-gray-500">Markdown · 120 KB</p>
+                </div>
+                <a href="#" class="text-blue-600 text-sm font-medium">Edit</a>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

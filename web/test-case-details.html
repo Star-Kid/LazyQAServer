@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LazyQA Test Case Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/sidebar.css" />
+    <link rel="stylesheet" href="css/test-case-modal.css" />
+    <script src="js/sidebar.js" defer></script>
+    <script src="js/test-case-modal.js" defer></script>
+  </head>
+  <body class="bg-gray-100 text-gray-900 font-inter">
+    <div class="sidebar-overlay" data-role="sidebar-overlay"></div>
+    <header class="mobile-top-bar">
+      <button
+        type="button"
+        class="mobile-menu-button"
+        data-role="mobile-menu-toggle"
+        aria-controls="app-sidebar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="mobile-menu-icon" aria-hidden="true"></span>
+      </button>
+      <div class="mobile-brand">
+        <span class="mobile-brand-dot" aria-hidden="true"></span>
+        <span>LazyQA</span>
+      </div>
+    </header>
+    <div class="app-shell">
+      <aside class="sidebar" data-role="app-sidebar" id="app-sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-logo" aria-label="LazyQA navigation">
+            <div class="sidebar-logo-mark" aria-hidden="true"></div>
+            <span class="sidebar-logo-text">LazyQA</span>
+          </div>
+          <div class="sidebar-project">
+            <div class="sidebar-project-placeholder" aria-hidden="true">🗂️</div>
+            <select class="sidebar-project-select" aria-label="Switch project">
+              <option>MazeKeeper</option>
+              <option>Locus Guide</option>
+              <option>Big Render</option>
+              <option class="add-new">+ Add new</option>
+            </select>
+          </div>
+          <nav class="sidebar-nav" aria-label="Primary">
+            <a href="Main.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">📊</span>
+              <span class="sidebar-label">Project Dashboard</span>
+            </a>
+            <a href="project-settings.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">⚙️</span>
+              <span class="sidebar-label">Project Settings</span>
+            </a>
+            <a href="documentation.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">📚</span>
+              <span class="sidebar-label">Documentation</span>
+            </a>
+            <div class="sidebar-link-with-action">
+              <a href="test-cases.html" class="sidebar-link active">
+                <span class="sidebar-icon" aria-hidden="true">🧪</span>
+                <span class="sidebar-label">Test Cases</span>
+              </a>
+              <button
+                type="button"
+                class="sidebar-action-button"
+                title="Add new Test Case"
+                data-modal-trigger="test-case"
+                aria-label="Create new test case"
+              >
+                ＋
+              </button>
+            </div>
+            <a href="test-runs.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">🧭</span>
+              <span class="sidebar-label">Test Runs</span>
+            </a>
+            <a href="reports.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">📈</span>
+              <span class="sidebar-label">Reports</span>
+            </a>
+          </nav>
+        </div>
+        <div class="sidebar-footer">
+          <nav class="sidebar-nav" aria-label="Secondary">
+            <a href="plans.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">💳</span>
+              <span class="sidebar-label">Plans</span>
+            </a>
+            <a href="settings.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">⚙️</span>
+              <span class="sidebar-label">Settings</span>
+            </a>
+          </nav>
+          <div class="sidebar-version">v0.3.2 Beta</div>
+        </div>
+      </aside>
+      <main class="app-main">
+        <div class="app-content space-y-8">
+                <section class="bg-white p-6 rounded-xl shadow border border-gray-200 relative overflow-hidden">
+                        <div class="absolute left-0 top-0 h-full w-1 bg-green-500"></div>
+                        <div class="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+                          <div class="lg:max-w-3xl">
+                            <div class="flex items-center gap-3 text-sm text-gray-500 mb-2">
+                              <span class="inline-flex items-center gap-1">📁 <span>Authentication</span></span>
+                              <span class="inline-flex items-center gap-1">💻 <span>Agent: macOS-local-01</span></span>
+                              <span class="inline-flex items-center gap-1">⏱️ <span>Last run: Oct 15, 2025</span></span>
+                            </div>
+                            <h1 class="text-xl font-semibold text-gray-900 tracking-tight">User Login with Valid Credentials</h1>
+                            <p class="mt-2 text-sm text-gray-600 leading-relaxed">
+                              Verify successful login with valid credentials and record telemetry for latency, UI rendering, and security validations.
+                            </p>
+                            <div class="mt-4 flex flex-wrap items-center gap-4 text-xs text-gray-600">
+                              <span class="inline-flex items-center gap-1 font-medium text-gray-700">Run 12×</span>
+                              <span class="inline-flex items-center gap-1">🧪 <span>Manual regression suite</span></span>
+                              <span class="inline-flex items-center gap-1">🧭 <span>Scenario path: happy-login</span></span>
+                            </div>
+                          </div>
+                          <div class="flex flex-col items-end gap-3 text-sm text-gray-700">
+                            <div class="flex items-center justify-end gap-2">
+                              <span class="bg-green-100 text-green-800 px-3 py-1 rounded text-xs font-semibold uppercase tracking-wide">Passed</span>
+                              <span class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600">
+                                <span class="text-blue-500">⏳</span>
+                                <span>Overall time: 45s</span>
+                              </span>
+                            </div>
+                            <div class="text-sm font-medium text-gray-900">Owner: John Doe</div>
+                            <div class="text-xs text-gray-500">Priority: Critical</div>
+                            <div class="flex flex-col items-end gap-2 text-xs text-blue-700">
+                              <span class="inline-flex items-center gap-2 bg-blue-50 px-3 py-1 rounded-full font-semibold">
+                                <span>📤 Sent tokens</span>
+                                <span class="text-blue-900">1,240</span>
+                              </span>
+                              <span class="inline-flex items-center gap-2 bg-blue-50 px-3 py-1 rounded-full font-semibold">
+                                <span>📥 Received tokens</span>
+                                <span class="text-blue-900">1,175</span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+
+                      <section class="bg-white p-6 rounded-xl shadow border border-gray-200 space-y-5">
+                        <div class="flex items-center justify-between gap-4">
+                          <h2 class="text-lg font-semibold text-gray-900 flex items-center gap-2">🪜 Test Steps &amp; Telemetry</h2>
+                          <div class="text-xs text-gray-500">Timeline recorded on Oct 15, 2025 • Total tokens: 2,415</div>
+                        </div>
+
+                        <article class="border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                          <header class="flex flex-col gap-3 bg-gray-50 px-4 py-4 md:flex-row md:items-center md:justify-between">
+                            <div class="flex items-center gap-3">
+                              <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-green-100 text-green-700 text-sm font-semibold">1</span>
+                              <div>
+                                <h3 class="text-sm font-semibold text-gray-800">Open Login Page</h3>
+                                <p class="text-xs text-gray-500">Page loads successfully and all UI elements are visible.</p>
+                              </div>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-3 text-xs">
+                              <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full font-semibold">Status: OK</span>
+                              <span class="inline-flex items-center gap-1 text-gray-600"><span class="text-blue-500">⏱</span>Duration: 8s</span>
+                              <span class="inline-flex items-center gap-1 text-blue-700"><span>🔁</span>Tokens: 320 sent • 280 received</span>
+                            </div>
+                          </header>
+                          <div class="px-4 py-4 space-y-4">
+                            <div class="flex gap-3">
+                              <img src="/images/step1.png" alt="Login page" class="rounded-md w-40 h-24 object-cover border" />
+                              <div class="text-xs text-gray-600 leading-relaxed">
+                                Recorded at 14:03 UTC. No layout shifts detected across responsive breakpoints.
+                              </div>
+                            </div>
+                            <div class="grid gap-3 md:grid-cols-2">
+                              <details class="group rounded-lg border border-gray-200">
+                                <summary class="flex cursor-pointer items-center justify-between gap-3 px-3 py-2 text-xs font-semibold text-gray-700">
+                                  <span class="inline-flex items-center gap-2"><span>📊</span>Analysis results</span>
+                                  <span class="inline-flex items-center justify-center rounded-full bg-gray-100 px-2 py-0.5 text-[11px] text-gray-600">2</span>
+                                </summary>
+                                <div class="px-3 pb-3 text-xs text-gray-600 space-y-1">
+                                  <p>Response time within 95th percentile (2.1s).</p>
+                                  <p>All resources served over HTTPS without redirects.</p>
+                                </div>
+                              </details>
+                              <details class="group rounded-lg border border-gray-200">
+                                <summary class="flex cursor-pointer items-center justify-between gap-3 px-3 py-2 text-xs font-semibold text-gray-700">
+                                  <span class="inline-flex items-center gap-2"><span>🎨</span>UI/UX recommendations</span>
+                                  <span class="inline-flex items-center justify-center rounded-full bg-gray-100 px-2 py-0.5 text-[11px] text-gray-600">1</span>
+                                </summary>
+                                <div class="px-3 pb-3 text-xs text-gray-600 space-y-1">
+                                  <p>Consider increasing contrast on secondary CTA for accessibility.</p>
+                                </div>
+                              </details>
+                              <details class="group rounded-lg border border-gray-200">
+                                <summary class="flex cursor-pointer items-center justify-between gap-3 px-3 py-2 text-xs font-semibold text-gray-700">
+                                  <span class="inline-flex items-center gap-2"><span>📈</span>Data insights</span>
+                                  <span class="inline-flex items-center justify-center rounded-full bg-gray-100 px-2 py-0.5 text-[11px] text-gray-600">3</span>
+                                </summary>
+                                <div class="px-3 pb-3 text-xs text-gray-600 space-y-1">
+                                  <p>18% of sessions load cached assets; opportunity to expand CDN coverage.</p>
+                                  <p>First contentful paint stable at 1.8s.</p>
+                                  <p>Time to interactive improved 6% compared to previous run.</p>
+                                </div>
+                              </details>
+                              <details class="group rounded-lg border border-gray-200">
+                                <summary class="flex cursor-pointer items-center justify-between gap-3 px-3 py-2 text-xs font-semibold text-gray-700">
+                                  <span class="inline-flex items-center gap-2"><span>⚠️</span>Errors</span>
+                                  <span class="inline-flex items-center justify-center rounded-full bg-gray-100 px-2 py-0.5 text-[11px] text-gray-600">0</span>
+                                </summary>
+                                <div class="px-3 pb-3 text-xs text-gray-500">
+                                  No issues detected for this step.
+                                </div>
+                              </details>
+                            </div>
+                          </div>
+                        </article>
+
+                        <article class="border border-yellow-200 rounded-lg shadow-sm overflow-hidden">
+                          <header class="flex flex-col gap-3 bg-yellow-50 px-4 py-4 md:flex-row md:items-center md:justify-between">
+                            <div class="flex items-center gap-3">
+                              <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-yellow-100 text-yellow-700 text-sm font-semibold">2</span>
+                              <div>
+                                <h3 class="text-sm font-semibold text-gray-800">Enter Credentials</h3>
+                                <p class="text-xs text-gray-500">Password input field renders with 2s delay.</p>
+                              </div>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-3 text-xs">
+                              <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full font-semibold">Status: Warning</span>
+                              <span class="inline-flex items-center gap-1 text-gray-600"><span class="text-blue-500">⏱</span>Duration: 17s</span>
+                              <span class="inline-flex items-center gap-1 text-blue-700"><span>🔁</span>Tokens: 540 sent • 480 received</span>
+                            </div>
+                          </header>
+                          <div class="px-4 py-4 space-y-4">
+                            <div class="flex gap-3">
+                              <img src="/images/step2.png" alt="Credentials input" class="rounded-md w-40 h-24 object-cover border" />
+                              <div class="text-xs text-gray-600 leading-relaxed">
+                                Rendering delay observed across Chrome and Firefox at 14:04 UTC; Safari unaffected.
+                              </div>
+                            </div>
+                            <div class="grid gap-3 md:grid-cols-2">
+                              <details class="group rounded-lg border border-gray-200">
+                                <summary class="flex cursor-pointer items-center justify-between gap-3 px-3 py-2 text-xs font-semibold text-gray-700">
+                                  <span class="inline-flex items-center gap-2"><span>📊</span>Analysis results</span>
+                                  <span class="inline-flex items-center justify-center rounded-full bg-gray-100 px-2 py-0.5 text-[11px] text-gray-600">2</span>
+                                </summary>
+                                <div class="px-3 pb-3 text-xs text-gray-600 space-y-1">
+                                  <p>Latency spike correlates with password strength validator warm-up.</p>
+                                  <p>Client logs show fallback to legacy debounce handler.</p>
+                                </div>
+                              </details>
+                              <details class="group rounded-lg border border-gray-200">
+                                <summary class="flex cursor-pointer items-center justify-between gap-3 px-3 py-2 text-xs font-semibold text-gray-700">
+                                  <span class="inline-flex items-center gap-2"><span>🎨</span>UI/UX recommendations</span>
+                                  <span class="inline-flex items-center justify-center rounded-full bg-gray-100 px-2 py-0.5 text-[11px] text-gray-600">2</span>
+                                </summary>
+                                <div class="px-3 pb-3 text-xs text-gray-600 space-y-1">
+                                  <p>Provide skeleton loader within password field to reflect processing.</p>
+                                  <p>Surface validation hint earlier to improve perceived performance.</p>
+                                </div>
+                              </details>
+                              <details class="group rounded-lg border border-gray-200">
+                                <summary class="flex cursor-pointer items-center justify-between gap-3 px-3 py-2 text-xs font-semibold text-gray-700">
+                                  <span class="inline-flex items-center gap-2"><span>📈</span>Data insights</span>
+                                  <span class="inline-flex items-center justify-center rounded-full bg-gray-100 px-2 py-0.5 text-[11px] text-gray-600">1</span>
+                                </summary>
+                                <div class="px-3 pb-3 text-xs text-gray-600 space-y-1">
+                                  <p>Average keystroke interval increased by 12% when delay occurs.</p>
+                                </div>
+                              </details>
+                              <details class="group rounded-lg border border-gray-200">
+                                <summary class="flex cursor-pointer items-center justify-between gap-3 px-3 py-2 text-xs font-semibold text-gray-700">
+                                  <span class="inline-flex items-center gap-2"><span>⚠️</span>Errors</span>
+                                  <span class="inline-flex items-center justify-center rounded-full bg-gray-100 px-2 py-0.5 text-[11px] text-gray-600">1</span>
+                                </summary>
+                                <div class="px-3 pb-3 text-xs text-gray-600 space-y-1">
+                                  <p><strong>BUG-3242:</strong> Password field delayed rendering by 2 seconds.</p>
+                                </div>
+                              </details>
+                            </div>
+                          </div>
+                        </article>
+
+                        <article class="border border-red-200 rounded-lg shadow-sm overflow-hidden">
+                          <header class="flex flex-col gap-3 bg-red-50 px-4 py-4 md:flex-row md:items-center md:justify-between">
+                            <div class="flex items-center gap-3">
+                              <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-red-100 text-red-700 text-sm font-semibold">3</span>
+                              <div>
+                                <h3 class="text-sm font-semibold text-gray-800">Click Login</h3>
+                                <p class="text-xs text-gray-500">Server returned 500 Internal Error after click.</p>
+                              </div>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-3 text-xs">
+                              <span class="bg-red-100 text-red-700 px-2 py-1 rounded-full font-semibold">Status: Error</span>
+                              <span class="inline-flex items-center gap-1 text-gray-600"><span class="text-blue-500">⏱</span>Duration: 20s</span>
+                              <span class="inline-flex items-center gap-1 text-blue-700"><span>🔁</span>Tokens: 380 sent • 295 received</span>
+                            </div>
+                          </header>
+                          <div class="px-4 py-4 space-y-4">
+                            <div class="flex gap-3">
+                              <img src="/images/step3.png" alt="Error message" class="rounded-md w-40 h-24 object-cover border" />
+                              <div class="text-xs text-gray-600 leading-relaxed">
+                                API gateway rejected request with 500 Internal Error. Trace ID <code class="bg-gray-100 px-1">6f2a1</code> stored for follow-up.
+                              </div>
+                            </div>
+                            <div class="grid gap-3 md:grid-cols-2">
+                              <details class="group rounded-lg border border-gray-200">
+                                <summary class="flex cursor-pointer items-center justify-between gap-3 px-3 py-2 text-xs font-semibold text-gray-700">
+                                  <span class="inline-flex items-center gap-2"><span>📊</span>Analysis results</span>
+                                  <span class="inline-flex items-center justify-center rounded-full bg-gray-100 px-2 py-0.5 text-[11px] text-gray-600">3</span>
+                                </summary>
+                                <div class="px-3 pb-3 text-xs text-gray-600 space-y-1">
+                                  <p>500 response triggered by token validation mismatch.</p>
+                                  <p>Retry with refreshed token succeeded, indicating cache invalidation gap.</p>
+                                  <p>Monitoring flagged spike across 12% of login attempts.</p>
+                                </div>
+                              </details>
+                              <details class="group rounded-lg border border-gray-200">
+                                <summary class="flex cursor-pointer items-center justify-between gap-3 px-3 py-2 text-xs font-semibold text-gray-700">
+                                  <span class="inline-flex items-center gap-2"><span>🎨</span>UI/UX recommendations</span>
+                                  <span class="inline-flex items-center justify-center rounded-full bg-gray-100 px-2 py-0.5 text-[11px] text-gray-600">1</span>
+                                </summary>
+                                <div class="px-3 pb-3 text-xs text-gray-600 space-y-1">
+                                  <p>Show inline retry CTA with contextual guidance when API failure occurs.</p>
+                                </div>
+                              </details>
+                              <details class="group rounded-lg border border-gray-200">
+                                <summary class="flex cursor-pointer items-center justify-between gap-3 px-3 py-2 text-xs font-semibold text-gray-700">
+                                  <span class="inline-flex items-center gap-2"><span>📈</span>Data insights</span>
+                                  <span class="inline-flex items-center justify-center rounded-full bg-gray-100 px-2 py-0.5 text-[11px] text-gray-600">2</span>
+                                </summary>
+                                <div class="px-3 pb-3 text-xs text-gray-600 space-y-1">
+                                  <p>Error rate peaked at 14:07 UTC with 8 concurrent failures.</p>
+                                  <p>Token refresh reduced failure rate by 75% in subsequent retries.</p>
+                                </div>
+                              </details>
+                              <details class="group rounded-lg border border-gray-200">
+                                <summary class="flex cursor-pointer items-center justify-between gap-3 px-3 py-2 text-xs font-semibold text-gray-700">
+                                  <span class="inline-flex items-center gap-2"><span>⚠️</span>Errors</span>
+                                  <span class="inline-flex items-center justify-center rounded-full bg-gray-100 px-2 py-0.5 text-[11px] text-gray-600">1</span>
+                                </summary>
+                                <div class="px-3 pb-3 text-xs text-gray-600 space-y-1">
+                                  <p><strong>BUG-3241:</strong> Login API throws 500 error on first request.</p>
+                                </div>
+                              </details>
+                            </div>
+                          </div>
+                        </article>
+                      </section>
+
+                      <section class="bg-white p-6 rounded-xl shadow border border-gray-200">
+                        <h2 class="text-lg font-semibold mb-3 text-gray-900 flex items-center gap-2">📝 QA Notes</h2>
+                        <textarea class="w-full border border-gray-300 rounded-lg p-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-200" rows="4">Preconditions: User account exists.
+                Expected Result: Login successful.
+                Actual Result: 500 Internal Error on Step 3.
+                Next Actions: Align backend token cache expiry with gateway expectations.</textarea>
+                      </section>
+
+                      <section class="bg-blue-50 p-6 rounded-xl shadow border border-blue-200">
+                        <h2 class="text-lg font-semibold mb-3 text-blue-800 flex items-center gap-2">🤖 AI Analysis &amp; Suggestions</h2>
+                        <p class="text-sm text-blue-900 leading-relaxed">
+                          The 500 error likely results from recent token validation updates. Suggest revalidating auth middleware and caching strategy.
+                          Regenerate service tokens after deployments and monitor API gateway retries to confirm stability.
+                        </p>
+                      </section>
+
+                      <section class="bg-white p-6 rounded-xl shadow border border-gray-200 space-y-5">
+                        <div class="flex items-center justify-between">
+                          <h2 class="text-lg font-semibold text-gray-900 flex items-center gap-2">💬 Collaborative Notes</h2>
+                          <button type="button" class="text-xs font-semibold text-blue-600 hover:text-blue-700">Subscribe to updates</button>
+                        </div>
+                        <form class="space-y-3">
+                          <label class="block text-xs font-semibold text-gray-700" for="commentArea">Add a comment</label>
+                          <textarea id="commentArea" class="w-full border border-gray-300 rounded-lg p-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-200" rows="3" placeholder="Share findings, action items, or sign-off notes"></textarea>
+                          <div class="flex items-center justify-end gap-3">
+                            <span class="text-[11px] text-gray-500">Signed in as <strong>alex.ivanov</strong></span>
+                            <button type="button" class="px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded-lg shadow hover:bg-blue-700">Post comment</button>
+                          </div>
+                        </form>
+                        <div class="space-y-4">
+                          <article class="border border-gray-200 rounded-lg p-4 bg-gray-50">
+                            <div class="flex items-center justify-between text-xs text-gray-500">
+                              <span class="font-semibold text-gray-700">alex.ivanov</span>
+                              <span>Posted 1 hour ago</span>
+                            </div>
+                            <p class="mt-2 text-sm text-gray-700">Coordinating with backend to patch token validator. Retest scheduled after deployment window.</p>
+                          </article>
+                          <article class="border border-gray-200 rounded-lg p-4 bg-gray-50">
+                            <div class="flex items-center justify-between text-xs text-gray-500">
+                              <span class="font-semibold text-gray-700">maria.g</span>
+                              <span>Posted yesterday</span>
+                            </div>
+                            <p class="mt-2 text-sm text-gray-700">Documented UX recommendation to display inline spinner when password validation is running.</p>
+                          </article>
+                        </div>
+                      </section>
+                </div>
+        </div>
+      </main>
+    </div>
+        <div id="testCaseModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="testCaseModalTitle">
+            <button type="button" class="modal-overlay" data-modal-overlay aria-label="Close manual test creation panel"></button>
+            <section class="modal-panel" role="document">
+              <form class="flex flex-col h-full" novalidate>
+                <div class="flex items-start justify-between">
+                  <div>
+                    <h2 id="testCaseModalTitle" class="text-2xl font-semibold text-gray-900">Create New Test Case</h2>
+                  </div>
+                  <button type="button" class="text-gray-400 hover:text-gray-600" data-modal-dismiss aria-label="Close panel">✕</button>
+                </div>
+
+                <div class="mt-8 flex flex-col flex-1 overflow-hidden text-sm text-gray-700">
+                  <div class="relative flex flex-wrap gap-2 border-b border-gray-200 pb-3" data-modal-tab-wrapper="primary">
+                    <button
+                      type="button"
+                      class="px-4 py-2 text-sm font-semibold text-gray-500 rounded-md transition-colors duration-200"
+                      data-modal-tab-group="primary"
+                      data-modal-tab-target="definition"
+                      data-modal-tab-default="true"
+                    >
+                      Definition
+                    </button>
+                    <button
+                      type="button"
+                      class="px-4 py-2 text-sm font-semibold text-gray-500 rounded-md transition-colors duration-200"
+                      data-modal-tab-group="primary"
+                      data-modal-tab-target="platform"
+                    >
+                      Platform
+                    </button>
+                    <button
+                      type="button"
+                      class="px-4 py-2 text-sm font-semibold text-gray-500 rounded-md transition-colors duration-200"
+                      data-modal-tab-group="primary"
+                      data-modal-tab-target="options"
+                    >
+                      Options
+                    </button>
+                    <span class="modal-tab-indicator" data-modal-tab-indicator="primary"></span>
+                  </div>
+
+                  <div class="flex-1 overflow-y-auto pt-6 space-y-10" data-modal-tab-panels>
+                    <div data-modal-tab-panel data-modal-tab-group="primary" data-modal-tab-section="definition" class="space-y-6">
+                      <label class="flex flex-col gap-2 text-sm text-gray-700">
+                        <span class="font-semibold text-gray-900">Action</span>
+                        <textarea
+                          id="manualTestAction"
+                          class="border border-red-400 rounded-lg px-3 py-3 focus:outline-none focus:ring-2 focus:ring-red-200 focus:border-red-500"
+                          placeholder="Describe the user action step-by-step"
+                          required
+                          data-modal-initial-focus
+                          data-autogrow
+                          data-action-source
+                          rows="2"
+                        ></textarea>
+                        <p class="text-xs text-gray-400">Explain in plain language what must be executed inside the product.</p>
+                      </label>
+
+                      <label class="flex flex-col gap-2 text-sm text-gray-700">
+                        <span class="font-semibold text-gray-900">Precondition</span>
+                        <textarea
+                          class="border border-gray-300 rounded-lg px-3 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          placeholder="List any data setup or navigation required before execution"
+                          data-autogrow
+                          rows="2"
+                        ></textarea>
+                      </label>
+
+                      <label class="flex flex-col gap-2 text-sm text-gray-700">
+                        <span class="font-semibold text-gray-900">Expected result</span>
+                        <textarea
+                          class="border border-gray-300 rounded-lg px-3 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          placeholder="Document the conditions that determine the test as passed"
+                          data-autogrow
+                          rows="2"
+                        ></textarea>
+                        <p class="text-xs text-gray-400">
+                          Describe which outcomes qualify as a success. If a follow-up flow on another device or account confirms
+                          success, reference the dependent test and expected outcome.
+                        </p>
+                      </label>
+                    </div>
+
+                    <div data-modal-tab-panel data-modal-tab-group="primary" data-modal-tab-section="platform" class="space-y-8 hidden">
+                      <div>
+                        <div class="flex items-center justify-between">
+                          <h3 class="text-base font-semibold text-gray-900">Application type</h3>
+                          <span class="text-xs text-gray-400">Switch tabs to tailor the environment</span>
+                        </div>
+                        <div class="relative flex flex-wrap gap-2 border-b border-gray-200 pb-2 mt-3" data-modal-tab-wrapper="platform">
+                          <button
+                            type="button"
+                            class="px-3 py-1.5 text-sm font-semibold text-gray-500 rounded-md transition-colors duration-200"
+                            data-modal-tab-group="platform"
+                            data-modal-tab-target="web"
+                            data-modal-tab-default="true"
+                          >
+                            Web
+                          </button>
+                          <button
+                            type="button"
+                            class="px-3 py-1.5 text-sm font-semibold text-gray-500 rounded-md transition-colors duration-200"
+                            data-modal-tab-group="platform"
+                            data-modal-tab-target="desktop"
+                          >
+                            Desktop Application
+                          </button>
+                          <button
+                            type="button"
+                            class="px-3 py-1.5 text-sm font-semibold text-gray-500 rounded-md transition-colors duration-200"
+                            data-modal-tab-group="platform"
+                            data-modal-tab-target="mobile"
+                          >
+                            Mobile App
+                          </button>
+                          <span class="modal-tab-indicator" data-modal-tab-indicator="platform"></span>
+                        </div>
+                      </div>
+
+                      <div class="space-y-6">
+                        <div data-modal-tab-panel data-modal-tab-group="platform" data-modal-tab-section="web" class="grid lg:grid-cols-2 gap-4 text-sm">
+                          <label class="flex flex-col gap-2 text-sm text-gray-700">
+                            <span class="font-medium text-gray-900">Browsers</span>
+                            <div class="relative" data-multi-select data-multi-select-placeholder="Select browsers">
+                              <button
+                                type="button"
+                                class="w-full flex items-center justify-between border border-gray-300 rounded-lg px-3 py-2 text-left focus:outline-none focus:ring-2 focus:ring-blue-200"
+                                data-multi-select-trigger
+                                aria-haspopup="listbox"
+                                aria-expanded="false"
+                              >
+                                <span data-multi-select-summary>Google Chrome, Mozilla Firefox</span>
+                                <svg class="w-4 h-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 9l6 6 6-6" />
+                                </svg>
+                              </button>
+                              <div
+                                class="absolute left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg overflow-hidden hidden z-10"
+                                data-multi-select-panel
+                                role="listbox"
+                                aria-multiselectable="true"
+                              >
+                                <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                                  <input type="checkbox" value="Google Chrome" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option checked />
+                                  <span>Google Chrome</span>
+                                </label>
+                                <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                                  <input type="checkbox" value="Mozilla Firefox" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option checked />
+                                  <span>Mozilla Firefox</span>
+                                </label>
+                                <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                                  <input type="checkbox" value="Microsoft Edge" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option />
+                                  <span>Microsoft Edge</span>
+                                </label>
+                                <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                                  <input type="checkbox" value="Safari" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option />
+                                  <span>Safari</span>
+                                </label>
+                              </div>
+                              <input type="hidden" name="browsers" value="Google Chrome,Mozilla Firefox" data-multi-select-input />
+                            </div>
+                          </label>
+                          <label class="flex flex-col gap-2 text-sm text-gray-700">
+                            <span class="font-medium text-gray-900">Primary URL</span>
+                            <input type="url" value="https://maze.example.com" class="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200" placeholder="https://app.example.com" />
+                          </label>
+                        </div>
+
+                        <div data-modal-tab-panel data-modal-tab-group="platform" data-modal-tab-section="desktop" class="grid lg:grid-cols-2 gap-4 text-sm hidden">
+                          <label class="flex flex-col gap-2 text-sm text-gray-700">
+                            <span class="font-medium text-gray-900">Desktop OS</span>
+                            <div class="relative" data-multi-select data-multi-select-placeholder="Select desktop operating systems">
+                              <button
+                                type="button"
+                                class="w-full flex items-center justify-between border border-gray-300 rounded-lg px-3 py-2 text-left focus:outline-none focus:ring-2 focus:ring-blue-200"
+                                data-multi-select-trigger
+                                aria-haspopup="listbox"
+                                aria-expanded="false"
+                              >
+                                <span data-multi-select-summary>Windows, macOS</span>
+                                <svg class="w-4 h-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 9l6 6 6-6" />
+                                </svg>
+                              </button>
+                              <div
+                                class="absolute left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg overflow-hidden hidden z-10"
+                                data-multi-select-panel
+                                role="listbox"
+                                aria-multiselectable="true"
+                              >
+                                <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                                  <input type="checkbox" value="Windows" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option checked />
+                                  <span>Windows</span>
+                                </label>
+                                <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                                  <input type="checkbox" value="macOS" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option checked />
+                                  <span>macOS</span>
+                                </label>
+                                <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                                  <input type="checkbox" value="Linux" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option />
+                                  <span>Linux</span>
+                                </label>
+                              </div>
+                              <input type="hidden" name="desktop-os" value="Windows,macOS" data-multi-select-input />
+                            </div>
+                          </label>
+                          <label class="flex flex-col gap-2 text-sm text-gray-700">
+                            <span class="font-medium text-gray-900">Application name</span>
+                            <input type="text" placeholder="MazeKeeper Desktop" class="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200" />
+                          </label>
+                        </div>
+
+                        <div data-modal-tab-panel data-modal-tab-group="platform" data-modal-tab-section="mobile" class="grid lg:grid-cols-2 gap-4 text-sm hidden">
+                          <label class="flex flex-col gap-2 text-sm text-gray-700">
+                            <span class="font-medium text-gray-900">Mobile OS</span>
+                            <div class="relative" data-multi-select data-multi-select-placeholder="Select mobile operating systems">
+                              <button
+                                type="button"
+                                class="w-full flex items-center justify-between border border-gray-300 rounded-lg px-3 py-2 text-left focus:outline-none focus:ring-2 focus:ring-blue-200"
+                                data-multi-select-trigger
+                                aria-haspopup="listbox"
+                                aria-expanded="false"
+                              >
+                                <span data-multi-select-summary>iOS, Android</span>
+                                <svg class="w-4 h-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 9l6 6 6-6" />
+                                </svg>
+                              </button>
+                              <div
+                                class="absolute left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg overflow-hidden hidden z-10"
+                                data-multi-select-panel
+                                role="listbox"
+                                aria-multiselectable="true"
+                              >
+                                <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                                  <input type="checkbox" value="iOS" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option checked />
+                                  <span>iOS</span>
+                                </label>
+                                <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                                  <input type="checkbox" value="Android" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option checked />
+                                  <span>Android</span>
+                                </label>
+                                <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                                  <input type="checkbox" value="HarmonyOS" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option />
+                                  <span>HarmonyOS</span>
+                                </label>
+                              </div>
+                              <input type="hidden" name="mobile-os" value="iOS,Android" data-multi-select-input />
+                            </div>
+                          </label>
+                          <label class="flex flex-col gap-2 text-sm text-gray-700">
+                            <span class="font-medium text-gray-900">Application name</span>
+                            <input type="text" placeholder="MazeKeeper Mobile" class="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200" />
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div data-modal-tab-panel data-modal-tab-group="primary" data-modal-tab-section="options" class="space-y-6 hidden -mt-6">
+                      <label class="flex flex-col gap-2 text-sm text-gray-700">
+                        <span class="font-semibold text-gray-900">Test type</span>
+                        <div class="relative" data-multi-select data-multi-select-placeholder="Select test types">
+                          <button
+                            type="button"
+                            class="w-full flex items-center justify-between border border-gray-300 rounded-lg px-3 py-2 text-left focus:outline-none focus:ring-2 focus:ring-blue-200"
+                            data-multi-select-trigger
+                            aria-haspopup="listbox"
+                            aria-expanded="false"
+                          >
+                            <span data-multi-select-summary>Business Logic Validation</span>
+                            <svg class="w-4 h-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 9l6 6 6-6" />
+                            </svg>
+                          </button>
+                          <div
+                            class="absolute left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg overflow-hidden hidden z-10"
+                            data-multi-select-panel
+                            role="listbox"
+                            aria-multiselectable="true"
+                          >
+                            <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                              <input type="checkbox" value="Business Logic Validation" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option checked />
+                              <span>Business Logic Validation</span>
+                            </label>
+                            <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                              <input type="checkbox" value="UI Regression" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option />
+                              <span>UI Regression</span>
+                            </label>
+                            <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                              <input type="checkbox" value="Smoke" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option />
+                              <span>Smoke</span>
+                            </label>
+                            <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                              <input type="checkbox" value="Performance" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option />
+                              <span>Performance</span>
+                            </label>
+                          </div>
+                          <input type="hidden" name="test-type" value="Business Logic Validation" data-multi-select-input />
+                        </div>
+                      </label>
+
+                      <label class="flex flex-col gap-2 text-sm text-gray-700">
+                        <span class="font-semibold text-gray-900">Environment</span>
+                        <select class="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200">
+                          <option>Stage</option>
+                          <option>Production</option>
+                          <option>QA Sandbox</option>
+                        </select>
+                      </label>
+
+                      <label class="flex flex-col gap-2 text-sm text-gray-700">
+                        <span class="font-semibold text-gray-900">Automation Agent</span>
+                        <select class="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200">
+                          <option>LazyQA</option>
+                          <option>Manual</option>
+                        </select>
+                      </label>
+
+                      <label class="flex flex-col gap-2 text-sm text-gray-700">
+                        <span class="font-semibold text-gray-900">💻 Agent Device</span>
+                        <div class="relative" data-multi-select data-multi-select-placeholder="Select agent devices">
+                          <button
+                            type="button"
+                            class="w-full flex items-center justify-between border border-gray-300 rounded-lg px-3 py-2 text-left focus:outline-none focus:ring-2 focus:ring-blue-200"
+                            data-multi-select-trigger
+                            aria-haspopup="listbox"
+                            aria-expanded="false"
+                          >
+                            <span data-multi-select-summary>macOS-local-01, windows-cloud-02, linux-grid-03</span>
+                            <svg class="w-4 h-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 9l6 6 6-6" />
+                            </svg>
+                          </button>
+                          <div
+                            class="absolute left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg overflow-hidden hidden z-10"
+                            data-multi-select-panel
+                            role="listbox"
+                            aria-multiselectable="true"
+                          >
+                            <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                              <input type="checkbox" value="macOS-local-01" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option checked />
+                              <span>macOS-local-01</span>
+                            </label>
+                            <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                              <input type="checkbox" value="windows-cloud-02" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option checked />
+                              <span>windows-cloud-02</span>
+                            </label>
+                            <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                              <input type="checkbox" value="linux-grid-03" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option checked />
+                              <span>linux-grid-03</span>
+                            </label>
+                            <label class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+                              <input type="checkbox" value="android-farm-04" class="w-4 h-4 text-blue-600 border-gray-300 rounded" data-multi-select-option />
+                              <span>android-farm-04</span>
+                            </label>
+                          </div>
+                          <input type="hidden" name="agent-devices" value="macOS-local-01,windows-cloud-02,linux-grid-03" data-multi-select-input />
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-gray-200 flex justify-end gap-3 text-sm">
+                  <button type="button" class="px-4 py-2 rounded-lg bg-blue-50 text-blue-600 border border-blue-200 font-medium" data-modal-dismiss>Cancel</button>
+                  <button type="button" class="px-4 py-2 rounded-lg bg-blue-600 text-white font-medium shadow-sm">💾 Save</button>
+                  <button type="button" class="px-4 py-2 rounded-lg bg-green-600 text-white font-medium shadow-sm">🚀 Save &amp; Run</button>
+                </div>
+              </form>
+            </section>
+          </div>
+  </body>
+</html>

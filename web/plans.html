@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LazyQA Plans</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/sidebar.css" />
+    <script src="js/sidebar.js" defer></script>
+  </head>
+  <body class="bg-gray-100 text-gray-900 font-inter">
+    <div class="sidebar-overlay" data-role="sidebar-overlay"></div>
+    <header class="mobile-top-bar">
+      <button
+        type="button"
+        class="mobile-menu-button"
+        data-role="mobile-menu-toggle"
+        aria-controls="app-sidebar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="mobile-menu-icon" aria-hidden="true"></span>
+      </button>
+      <div class="mobile-brand">
+        <span class="mobile-brand-dot" aria-hidden="true"></span>
+        <span>LazyQA</span>
+      </div>
+    </header>
+    <div class="app-shell">
+      <aside class="sidebar" data-role="app-sidebar" id="app-sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-logo" aria-label="LazyQA navigation">
+            <div class="sidebar-logo-mark" aria-hidden="true"></div>
+            <span class="sidebar-logo-text">LazyQA</span>
+          </div>
+          <div class="sidebar-project">
+            <div class="sidebar-project-placeholder" aria-hidden="true">🗂️</div>
+            <select class="sidebar-project-select" aria-label="Switch project">
+              <option>MazeKeeper</option>
+              <option>Locus Guide</option>
+              <option>Big Render</option>
+              <option class="add-new">+ Add new</option>
+            </select>
+          </div>
+          <nav class="sidebar-nav" aria-label="Primary">
+            <a href="Main.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">📊</span>
+              <span class="sidebar-label">Project Dashboard</span>
+            </a>
+            <a href="project-settings.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">⚙️</span>
+              <span class="sidebar-label">Project Settings</span>
+            </a>
+            <a href="documentation.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">📚</span>
+              <span class="sidebar-label">Documentation</span>
+            </a>
+            <a href="test-cases.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">🧪</span>
+              <span class="sidebar-label">Test Cases</span>
+            </a>
+            <a href="test-runs.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">🧭</span>
+              <span class="sidebar-label">Test Runs</span>
+            </a>
+            <a href="reports.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">📈</span>
+              <span class="sidebar-label">Reports</span>
+            </a>
+          </nav>
+        </div>
+        <div class="sidebar-footer">
+          <nav class="sidebar-nav" aria-label="Secondary">
+            <a href="plans.html" class="sidebar-link active">
+              <span class="sidebar-icon" aria-hidden="true">💳</span>
+              <span class="sidebar-label">Plans</span>
+            </a>
+            <a href="settings.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">⚙️</span>
+              <span class="sidebar-label">Settings</span>
+            </a>
+          </nav>
+          <div class="sidebar-version">v0.3.2 Beta</div>
+        </div>
+      </aside>
+      <main class="app-main">
+        <div class="app-content space-y-6">
+                <header class="flex justify-between items-center">
+                        <div>
+                          <h1 class="text-2xl font-semibold text-gray-900">Plans &amp; Usage</h1>
+                          <p class="text-sm text-gray-600">Scale AI-powered quality coverage with flexible subscriptions.</p>
+                        </div>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium shadow hover:bg-blue-700 transition">📞 Talk to Sales</button>
+                      </header>
+
+                      <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <article class="bg-white border border-gray-200 rounded-xl shadow p-6 space-y-3">
+                          <div class="flex items-center justify-between">
+                            <h2 class="text-lg font-semibold text-gray-800">Starter</h2>
+                            <span class="text-sm font-semibold text-gray-500">$79/mo</span>
+                          </div>
+                          <p class="text-sm text-gray-600">Ideal for small teams validating core journeys.</p>
+                          <ul class="space-y-2 text-sm text-gray-700">
+                            <li>✔️ 1 AI exploration license</li>
+                            <li>✔️ 3 parallel test sessions</li>
+                            <li>✔️ Slack notifications</li>
+                            <li>➖ Email support</li>
+                          </ul>
+                          <button class="border border-gray-300 rounded px-3 py-1 text-sm font-medium hover:bg-gray-100">Choose Starter</button>
+                        </article>
+                        <article class="bg-white border-2 border-blue-400 rounded-xl shadow-lg p-6 space-y-3">
+                          <div class="flex items-center justify-between">
+                            <h2 class="text-lg font-semibold text-gray-800">Growth</h2>
+                            <span class="text-sm font-semibold text-blue-600">$159/mo</span>
+                          </div>
+                          <p class="text-sm text-gray-600">Balance manual, scripted, and AI-led coverage.</p>
+                          <ul class="space-y-2 text-sm text-gray-700">
+                            <li>✔️ 3 AI exploration licenses</li>
+                            <li>✔️ 10 parallel test sessions</li>
+                            <li>✔️ Advanced analytics</li>
+                            <li>✔️ Priority chat support</li>
+                          </ul>
+                          <button class="bg-blue-600 text-white rounded px-3 py-1 text-sm font-medium hover:bg-blue-700">Current Plan</button>
+                        </article>
+                        <article class="bg-white border border-gray-200 rounded-xl shadow p-6 space-y-3">
+                          <div class="flex items-center justify-between">
+                            <h2 class="text-lg font-semibold text-gray-800">Enterprise</h2>
+                            <span class="text-sm font-semibold text-gray-500">Custom</span>
+                          </div>
+                          <p class="text-sm text-gray-600">Designed for regulated environments and global teams.</p>
+                          <ul class="space-y-2 text-sm text-gray-700">
+                            <li>✔️ Unlimited AI exploration</li>
+                            <li>✔️ Dedicated success engineer</li>
+                            <li>✔️ SSO &amp; audit trails</li>
+                            <li>✔️ Private deployment options</li>
+                          </ul>
+                          <button class="border border-blue-500 text-blue-600 rounded px-3 py-1 text-sm font-medium hover:bg-blue-50">Contact Us</button>
+                        </article>
+                      </section>
+
+                      <section class="bg-white border border-gray-200 rounded-xl shadow p-6 space-y-4">
+                        <div class="flex justify-between items-center">
+                          <h2 class="text-lg font-semibold text-gray-800">Usage Summary</h2>
+                          <a href="settings.html#licenses" class="text-sm text-blue-600 font-medium">Manage licenses →</a>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-4 text-sm text-gray-700">
+                          <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                            <p class="text-xs uppercase text-blue-600 font-semibold">AI exploration hours</p>
+                            <p class="text-2xl font-bold text-gray-900">124 / 180</p>
+                            <p class="text-xs text-gray-500">Resets in 14 days</p>
+                          </div>
+                          <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                            <p class="text-xs uppercase text-green-600 font-semibold">Manual sessions</p>
+                            <p class="text-2xl font-bold text-gray-900">58 / 120</p>
+                            <p class="text-xs text-gray-500">Includes guest licenses</p>
+                          </div>
+                          <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                            <p class="text-xs uppercase text-yellow-600 font-semibold">Storage</p>
+                            <p class="text-2xl font-bold text-gray-900">512 GB</p>
+                            <p class="text-xs text-gray-500">Auto-purge enabled at 90 days</p>
+                          </div>
+                        </div>
+                      </section>
+                </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

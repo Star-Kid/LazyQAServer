@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LazyQA Licenses</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/sidebar.css" />
+    <script src="js/sidebar.js" defer></script>
+  </head>
+  <body class="bg-gray-100 text-gray-900 font-inter">
+    <div class="sidebar-overlay" data-role="sidebar-overlay"></div>
+    <header class="mobile-top-bar">
+      <button
+        type="button"
+        class="mobile-menu-button"
+        data-role="mobile-menu-toggle"
+        aria-controls="app-sidebar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="mobile-menu-icon" aria-hidden="true"></span>
+      </button>
+      <div class="mobile-brand">
+        <span class="mobile-brand-dot" aria-hidden="true"></span>
+        <span>LazyQA</span>
+      </div>
+    </header>
+    <div class="app-shell">
+      <aside class="sidebar" data-role="app-sidebar" id="app-sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-logo" aria-label="LazyQA navigation">
+            <div class="sidebar-logo-mark" aria-hidden="true"></div>
+            <span class="sidebar-logo-text">LazyQA</span>
+          </div>
+          <div class="sidebar-project">
+            <div class="sidebar-project-placeholder" aria-hidden="true">🗂️</div>
+            <select class="sidebar-project-select" aria-label="Switch project">
+              <option>MazeKeeper</option>
+              <option>Locus Guide</option>
+              <option>Big Render</option>
+              <option class="add-new">+ Add new</option>
+            </select>
+          </div>
+          <nav class="sidebar-nav" aria-label="Primary">
+            <a href="Main.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">📊</span>
+              <span class="sidebar-label">Project Dashboard</span>
+            </a>
+            <a href="project-settings.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">⚙️</span>
+              <span class="sidebar-label">Project Settings</span>
+            </a>
+            <a href="documentation.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">📚</span>
+              <span class="sidebar-label">Documentation</span>
+            </a>
+            <a href="test-cases.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">🧪</span>
+              <span class="sidebar-label">Test Cases</span>
+            </a>
+            <a href="test-runs.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">🧭</span>
+              <span class="sidebar-label">Test Runs</span>
+            </a>
+            <a href="reports.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">📈</span>
+              <span class="sidebar-label">Reports</span>
+            </a>
+          </nav>
+        </div>
+        <div class="sidebar-footer">
+          <nav class="sidebar-nav" aria-label="Secondary">
+            <a href="plans.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">💳</span>
+              <span class="sidebar-label">Plans</span>
+            </a>
+            <a href="settings.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">⚙️</span>
+              <span class="sidebar-label">Settings</span>
+            </a>
+          </nav>
+          <div class="sidebar-version">v0.3.2 Beta</div>
+        </div>
+      </aside>
+      <main class="app-main">
+        <div class="app-content space-y-6">
+                <header class="flex justify-between items-center">
+                        <div>
+                          <h1 class="text-2xl font-semibold text-gray-900">License Management</h1>
+                          <p class="text-sm text-gray-600">Assign seats, invite teammates, and track AI exploration capacity.</p>
+                        </div>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium shadow hover:bg-blue-700 transition">➕ Invite User</button>
+                      </header>
+
+                      <section class="bg-white border border-gray-200 rounded-xl shadow p-6 space-y-4">
+                        <div class="flex justify-between items-center">
+                          <h2 class="text-lg font-semibold text-gray-800">Team Seats</h2>
+                          <button class="text-sm text-blue-600 font-medium">Bulk actions</button>
+                        </div>
+                        <div class="overflow-x-auto">
+                          <table class="min-w-full text-sm text-left text-gray-700">
+                            <thead class="text-xs uppercase text-gray-500">
+                              <tr>
+                                <th class="py-2">Member</th>
+                                <th class="py-2">Role</th>
+                                <th class="py-2">License</th>
+                                <th class="py-2">Status</th>
+                                <th class="py-2">Last active</th>
+                                <th class="py-2 text-right">Actions</th>
+                              </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                              <tr>
+                                <td class="py-3">
+                                  <p class="font-medium text-gray-800">John Doe</p>
+                                  <p class="text-xs text-gray-500">john@maze.example</p>
+                                </td>
+                                <td class="py-3">QA Lead</td>
+                                <td class="py-3">AI Explorer</td>
+                                <td class="py-3"><span class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs font-semibold">Active</span></td>
+                                <td class="py-3">5 minutes ago</td>
+                                <td class="py-3 text-right"><a href="#" class="text-blue-600 text-sm font-medium">Manage</a></td>
+                              </tr>
+                              <tr>
+                                <td class="py-3">
+                                  <p class="font-medium text-gray-800">Jane Smith</p>
+                                  <p class="text-xs text-gray-500">jane@maze.example</p>
+                                </td>
+                                <td class="py-3">Automation Engineer</td>
+                                <td class="py-3">Parallel Sessions</td>
+                                <td class="py-3"><span class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs font-semibold">Active</span></td>
+                                <td class="py-3">42 minutes ago</td>
+                                <td class="py-3 text-right"><a href="#" class="text-blue-600 text-sm font-medium">Manage</a></td>
+                              </tr>
+                              <tr>
+                                <td class="py-3">
+                                  <p class="font-medium text-gray-800">Alex Roe</p>
+                                  <p class="text-xs text-gray-500">alex@maze.example</p>
+                                </td>
+                                <td class="py-3">Product Manager</td>
+                                <td class="py-3">Reviewer</td>
+                                <td class="py-3"><span class="bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded text-xs font-semibold">Pending</span></td>
+                                <td class="py-3">Invite sent</td>
+                                <td class="py-3 text-right"><a href="#" class="text-blue-600 text-sm font-medium">Resend</a></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </section>
+
+                      <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <article class="bg-white border border-gray-200 rounded-xl shadow p-6 space-y-3 text-sm text-gray-700">
+                          <h2 class="text-lg font-semibold text-gray-800">Seat Allocation</h2>
+                          <p>Use the slider to reserve licenses for upcoming releases or special initiatives.</p>
+                          <div class="space-y-2">
+                            <label class="flex justify-between text-xs text-gray-500">
+                              <span>AI exploration</span><span>3 / 5 assigned</span>
+                            </label>
+                            <input type="range" min="0" max="5" value="3" class="w-full" />
+                            <label class="flex justify-between text-xs text-gray-500">
+                              <span>Manual sessions</span><span>8 / 12 assigned</span>
+                            </label>
+                            <input type="range" min="0" max="12" value="8" class="w-full" />
+                          </div>
+                        </article>
+                        <article class="bg-white border border-gray-200 rounded-xl shadow p-6 space-y-3 text-sm text-gray-700">
+                          <h2 class="text-lg font-semibold text-gray-800">Audit Log</h2>
+                          <ul class="space-y-2">
+                            <li>
+                              <p class="font-medium text-gray-800">License reassigned to Jane Smith</p>
+                              <p class="text-xs text-gray-500">Today · 09:22 UTC · by John Doe</p>
+                            </li>
+                            <li>
+                              <p class="font-medium text-gray-800">Alex Roe invited as Reviewer</p>
+                              <p class="text-xs text-gray-500">Yesterday · 18:17 UTC · by Maria Lopez</p>
+                            </li>
+                            <li>
+                              <p class="font-medium text-gray-800">AI exploration quota increased to 5</p>
+                              <p class="text-xs text-gray-500">Oct 12 · 14:03 UTC · by Automation</p>
+                            </li>
+                          </ul>
+                        </article>
+                      </section>
+                </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

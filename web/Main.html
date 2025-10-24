@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LazyQA Project Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/sidebar.css" />
+    <link rel="stylesheet" href="css/test-case-modal.css" />
+    <script src="js/sidebar.js" defer></script>
+    <script src="js/test-case-modal.js" defer></script>
+  </head>
+  <body class="bg-gray-100 text-gray-900 font-inter">
+    <div class="sidebar-overlay" data-role="sidebar-overlay"></div>
+    <header class="mobile-top-bar">
+      <button
+        type="button"
+        class="mobile-menu-button"
+        data-role="mobile-menu-toggle"
+        aria-controls="app-sidebar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="mobile-menu-icon" aria-hidden="true"></span>
+      </button>
+      <div class="mobile-brand">
+        <span class="mobile-brand-dot" aria-hidden="true"></span>
+        <span>LazyQA</span>
+      </div>
+    </header>
+    <div class="app-shell">
+      <aside class="sidebar" data-role="app-sidebar" id="app-sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-logo" aria-label="LazyQA navigation">
+            <div class="sidebar-logo-mark" aria-hidden="true"></div>
+            <span class="sidebar-logo-text">LazyQA</span>
+          </div>
+          <div class="sidebar-project">
+            <div class="sidebar-project-placeholder" aria-hidden="true">🗂️</div>
+            <select class="sidebar-project-select" aria-label="Switch project">
+              <option>MazeKeeper</option>
+              <option>Locus Guide</option>
+              <option>Big Render</option>
+              <option class="add-new">+ Add new</option>
+            </select>
+          </div>
+          <nav class="sidebar-nav" aria-label="Primary">
+            <a href="Main.html" class="sidebar-link active">
+              <span class="sidebar-icon" aria-hidden="true">📊</span>
+              <span class="sidebar-label">Project Dashboard</span>
+            </a>
+            <a href="project-settings.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">⚙️</span>
+              <span class="sidebar-label">Project Settings</span>
+            </a>
+            <a href="documentation.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">📚</span>
+              <span class="sidebar-label">Documentation</span>
+            </a>
+            <a href="test-cases.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">🧪</span>
+              <span class="sidebar-label">Test Cases</span>
+            </a>
+            <a href="test-runs.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">🧭</span>
+              <span class="sidebar-label">Test Runs</span>
+            </a>
+            <a href="reports.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">📈</span>
+              <span class="sidebar-label">Reports</span>
+            </a>
+          </nav>
+        </div>
+        <div class="sidebar-footer">
+          <nav class="sidebar-nav" aria-label="Secondary">
+            <a href="plans.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">💳</span>
+              <span class="sidebar-label">Plans</span>
+            </a>
+            <a href="settings.html" class="sidebar-link">
+              <span class="sidebar-icon" aria-hidden="true">⚙️</span>
+              <span class="sidebar-label">Settings</span>
+            </a>
+          </nav>
+          <div class="sidebar-version">v0.3.2 Beta</div>
+        </div>
+      </aside>
+      <main class="app-main">
+        <div class="app-content space-y-6">
+          <header class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+            <div>
+              <h1 class="text-2xl font-semibold text-gray-900">MazeKeeper Overview</h1>
+              <p class="text-sm text-gray-600">
+                Live status, quality gates, and AI exploration progress for the active project.
+              </p>
+            </div>
+            <button
+              class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium shadow hover:bg-blue-700 transition"
+              data-modal-trigger="test-case"
+            >
+              ➕ New Test Initiative
+            </button>
+          </header>
+
+          <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-white border border-gray-200 rounded-xl p-5 shadow">
+              <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Automation Coverage</h2>
+              <p class="text-3xl font-bold text-gray-900 mt-2">68%</p>
+              <p class="text-xs text-green-600 mt-1">▲ 5% vs last sprint</p>
+            </div>
+            <div class="bg-white border border-gray-200 rounded-xl p-5 shadow">
+              <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Active Defects</h2>
+              <p class="text-3xl font-bold text-gray-900 mt-2">14</p>
+              <p class="text-xs text-yellow-600 mt-1">5 critical · 3 high · 6 medium</p>
+            </div>
+            <div class="bg-white border border-gray-200 rounded-xl p-5 shadow">
+              <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">AI Exploration</h2>
+              <p class="text-3xl font-bold text-gray-900 mt-2">42%</p>
+              <p class="text-xs text-gray-500 mt-1">Next crawl scheduled in 3h 12m</p>
+            </div>
+          </section>
+
+          <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <article class="lg:col-span-2 bg-white border border-gray-200 rounded-xl shadow p-6">
+              <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-semibold text-gray-800">Test Run Status</h2>
+                <a href="test-runs.html" class="text-sm text-blue-600 font-medium">View all runs →</a>
+              </div>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center border border-gray-200 rounded-lg px-4 py-3">
+                  <div>
+                    <p class="font-medium text-gray-800">Smoke Suite · Build #582</p>
+                    <p class="text-xs text-gray-500">Triggered by CI at 08:31 UTC</p>
+                  </div>
+                  <div class="text-right">
+                    <span class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded">Passed</span>
+                    <p class="text-xs text-gray-500 mt-1">48 / 48 tests</p>
+                  </div>
+                </div>
+                <div class="flex justify-between items-center border border-gray-200 rounded-lg px-4 py-3">
+                  <div>
+                    <p class="font-medium text-gray-800">Regression · Build #581</p>
+                    <p class="text-xs text-gray-500">Manual trigger by Jane Smith</p>
+                  </div>
+                  <div class="text-right">
+                    <span class="bg-red-100 text-red-700 text-xs font-semibold px-3 py-1 rounded">Failed</span>
+                    <p class="text-xs text-gray-500 mt-1">123 / 130 tests</p>
+                  </div>
+                </div>
+                <div class="flex justify-between items-center border border-gray-200 rounded-lg px-4 py-3">
+                  <div>
+                    <p class="font-medium text-gray-800">AI Exploration Cycle</p>
+                    <p class="text-xs text-gray-500">Autonomous crawl in progress</p>
+                  </div>
+                  <div class="text-right">
+                    <span class="bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1 rounded">Running</span>
+                    <p class="text-xs text-gray-500 mt-1">18 / 50 flows explored</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="bg-white border border-gray-200 rounded-xl shadow p-6 space-y-4">
+              <div class="flex justify-between items-center">
+                <h2 class="text-lg font-semibold text-gray-800">Quality Gates</h2>
+                <button class="text-xs text-blue-600 font-medium">Manage</button>
+              </div>
+              <ul class="space-y-3 text-sm text-gray-700">
+                <li class="flex items-center justify-between">
+                  <span>🚦 Critical bugs &lt; 10</span>
+                  <span class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs font-semibold">On track</span>
+                </li>
+                <li class="flex items-center justify-between">
+                  <span>🧪 Automated regression ≥ 95%</span>
+                  <span class="bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded text-xs font-semibold">At risk</span>
+                </li>
+                <li class="flex items-center justify-between">
+                  <span>⚙️ Performance baseline &lt; 400ms</span>
+                  <span class="bg-red-100 text-red-700 px-2 py-0.5 rounded text-xs font-semibold">Failing</span>
+                </li>
+              </ul>
+            </article>
+          </section>
+
+          <section class="bg-white border border-gray-200 rounded-xl shadow p-6">
+            <div class="flex justify-between items-center mb-4">
+              <h2 class="text-lg font-semibold text-gray-800">Recent Activity</h2>
+              <a href="reports.html" class="text-sm text-blue-600 font-medium">Download report</a>
+            </div>
+            <ul class="space-y-3 text-sm text-gray-700">
+              <li class="flex items-start gap-3">
+                <span class="text-lg">✅</span>
+                <div>
+                  <p class="font-medium text-gray-800">Login API fix validated in regression suite.</p>
+                  <p class="text-xs text-gray-500">5 minutes ago · linked to BUG-3241</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-lg">📝</span>
+                <div>
+                  <p class="font-medium text-gray-800">Documentation updated with new onboarding flow.</p>
+                  <p class="text-xs text-gray-500">24 minutes ago · by John Doe</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-lg">🤖</span>
+                <div>
+                  <p class="font-medium text-gray-800">AI assistant suggested 3 exploratory paths.</p>
+                  <p class="text-xs text-gray-500">1 hour ago · automation</p>
+                </div>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <div
+      id="testCaseModal"
+      class="modal"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="testCaseModalTitle"
+    >
+      <button type="button" class="modal-overlay" data-modal-overlay aria-label="Close manual test creation panel"></button>
+      <section class="modal-panel" role="document">
+        <div class="flex items-start justify-between">
+          <div>
+            <h2 id="testCaseModalTitle" class="text-xl font-semibold text-gray-800">Create New Test Case</h2>
+          </div>
+          <button type="button" class="text-gray-400 hover:text-gray-600" data-modal-dismiss aria-label="Close panel">✕</button>
+        </div>
+
+        <div class="mt-6 space-y-5 text-sm text-gray-700">
+          <div>
+            <label for="manualTestDescription" class="block text-sm font-medium text-gray-700">Description</label>
+            <textarea
+              id="manualTestDescription"
+              class="mt-2 w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              rows="3"
+              placeholder="Describe what should be tested..."
+              data-modal-initial-focus
+            ></textarea>
+          </div>
+
+          <div>
+            <label for="manualTestType" class="block text-sm font-medium text-gray-700">Test Type</label>
+            <select
+              id="manualTestType"
+              class="mt-2 w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option>All</option>
+              <option>Cross-browser compatibility</option>
+              <option>Frontend bug detection</option>
+              <option>Business logic validation</option>
+              <option>Penetration testing</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Application Type</label>
+            <div class="flex gap-3 mt-2">
+              <button type="button" class="tab-trigger is-active" data-tab-target="web" data-tab-default="true">Web</button>
+              <button type="button" class="tab-trigger" data-tab-target="desktop">Desktop App</button>
+              <button type="button" class="tab-trigger" data-tab-target="mobile">Mobile</button>
+            </div>
+          </div>
+
+          <div data-tab-panel="web">
+            <label for="manualTestBrowser" class="block text-sm font-medium text-gray-700">Browser</label>
+            <select
+              id="manualTestBrowser"
+              class="mt-2 w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option>Google Chrome</option>
+              <option>Mozilla Firefox</option>
+              <option>Safari</option>
+              <option>Microsoft Edge</option>
+            </select>
+          </div>
+
+          <div data-tab-panel="desktop" hidden>
+            <label for="manualTestDesktop" class="block text-sm font-medium text-gray-700">Desktop environment</label>
+            <select
+              id="manualTestDesktop"
+              class="mt-2 w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option>Windows 11</option>
+              <option>macOS Sonoma</option>
+              <option>Ubuntu 22.04</option>
+            </select>
+          </div>
+
+          <div data-tab-panel="mobile" hidden>
+            <label for="manualTestMobile" class="block text-sm font-medium text-gray-700">Mobile platform</label>
+            <select
+              id="manualTestMobile"
+              class="mt-2 w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option>iOS</option>
+              <option>Android</option>
+              <option>HarmonyOS</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="manualTestOwner" class="block text-sm font-medium text-gray-700">Owner</label>
+            <input
+              id="manualTestOwner"
+              type="text"
+              class="mt-2 w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Assign to..."
+            />
+          </div>
+
+          <div>
+            <label for="manualTestDue" class="block text-sm font-medium text-gray-700">Due Date</label>
+            <input
+              id="manualTestDue"
+              type="date"
+              class="mt-2 w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+        </div>
+
+        <div class="mt-6 flex justify-end gap-3">
+          <button type="button" class="text-sm font-medium text-gray-500" data-modal-dismiss>Cancel</button>
+          <button type="button" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium shadow hover:bg-blue-700">
+            Create test case
+          </button>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
