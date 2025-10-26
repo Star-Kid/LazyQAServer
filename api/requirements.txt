@@ -1,5 +1,0 @@
-fastapi[all]
-sqlalchemy
-pydantic
-asyncpg
-greenlet
